@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Address Book</ion-title>
+    <ion-buttons end *ngIf="!isContactListEmpty()">
+      <button ion-button icon-only (click)="onRemoveAll()" title="Remove All">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="fade-in-long">
+
+  <div *ngIf="contacts.length > 0">
+
+    <div padding text-center class="color-blue">
+      <ion-icon name="arrow-round-back"></ion-icon>
+      <span class="margin-left-subtitle">Swipe contact to the left to remove</span>
+    </div>
+
+    <ion-list inset>
+      <ion-item-sliding *ngFor="let contact of contacts" #slidingContact>
+        <button ion-item (click)="onViewContactDetail(contact)">
+          <ion-avatar item-start>
+            <img [src]="urlAvatar" alt="">
+          </ion-avatar>
+          <h2>{{ contact.firstName }} {{ contact.lastName }}</h2>
+          <p>{{ contact.email }}</p>
+          <button ion-button clear item-end>
+            <ion-icon name="play"></ion-icon>
+          </button>
+        </button>
+        <ion-item-options side="right">
+          <button ion-button color="danger" (click)="onRemoveContact(contact.email, slidingContact)">
+            <ion-icon name="trash"></ion-icon>
+            Delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+  <div *ngIf="contacts.length < 1" class="centered-in-page">
+    <img src="assets/imgs/contacts-ios-grey.svg" class="logo-emtpy-list"/>
+    <div class="text-empty-list">Address Book is empty</div>
+  </div>
+
+  <ion-fab right bottom class="fab-position">
+    <button ion-fab color="primary" (click)="onNewContact()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

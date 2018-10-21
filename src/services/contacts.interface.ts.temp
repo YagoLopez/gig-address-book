@@ -1,0 +1,20 @@
+// todo: borrar este fichero
+
+import { Contact } from '../models/contact';
+
+/**
+ * "Contacts" interface defines the shape of a "Contacts Repository". Here we are using the
+ * "Repository Patter" to implement a Data Access Layer (DAL)
+ *
+ * The intention of using an interface is to be able to add:
+ *
+ * • A contacts service with data defined in LOCAL STORAGE
+ * • A mocked contact service with data defined in MEMORY for testing purposes
+ */
+export interface Contacts {
+  getAll(): Contact[];
+  sortAlphabetically(contacts: Contact[]): Contact[];
+  add(contact: Contact): void;
+  remove(emailAsId: string): string;
+  update(emailAsId: string): Contact;
+}

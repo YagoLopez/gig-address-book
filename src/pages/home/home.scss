@@ -1,0 +1,42 @@
+ion-fab[right] {
+  right: 40px;
+}
+ion-fab[bottom] {
+  bottom: 30px;
+}
+
+.color-blue {
+  color: cornflowerblue;
+}
+
+.margin-left-subtitle {
+  margin-left: 5px;
+}
+
+.fade-in-long {
+  -webkit-animation: fade 0.8s ease both;
+  animation: fade 0.8s ease both
+}
+@-webkit-keyframes fade {
+  from {opacity: 0 } to { opacity: 1 }
+}
+@keyframes fade {
+  from {opacity: 0 } to { opacity: 1 }
+}
+
+.centered-in-page {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 90%;
+  color: #efefef;
+}
+
+.logo-emtpy-list {
+  width: 70px;
+}
+
+.text-empty-list {
+  color: lightgrey;
+}
