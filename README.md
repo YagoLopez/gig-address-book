@@ -15,6 +15,7 @@ By [Yago López Salvador](https://yagolopez.js.org)
 - **LoDash** as utility for JavaScript collection management
 - Supported browsers: Chrome, Firefox, Edge, modern versions.
 - **Testing**: Ionci v3 does not provide infrastructure for testing like Angular with Jasmine, Karma and Protractor. So Jest testing framework has been added
+- Operations logged to browser console
 
 ## Architecture
 

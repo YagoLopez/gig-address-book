@@ -25,7 +25,7 @@
 
     <ion-list inset>
       <ion-item-sliding *ngFor="let contact of contacts" #slidingContact>
-        <button ion-item (click)="onViewContact(contact)">
+        <button ion-item (click)="onViewContact(contact)" title="View Contact">
           <ion-avatar item-start>
             <img [src]="urlAvatar" alt="">
           </ion-avatar>

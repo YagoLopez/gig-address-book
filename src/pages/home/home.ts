@@ -19,19 +19,13 @@ export class HomePage {
   };
 
   constructor(public navCtrl: NavController, private contactsService: ContactsService) {
-    console.log('HomePage constructor');
     contactsService.loadContactsFromLocalStorage();
     if (contactsService.isEmpty()) {
       contactsService.loadContactsFromMemory()
     }
     contactsService.sortAlphabetically();
-    console.log('constructor - contacts', this.contacts);
+    this.contactsService.logToConsole();
   }
-
-
-  // getContacts(): Contact[] {
-  //   return this.contactsService.getAll();
-  // }
 
   onViewContact(contact: Contact) {
     this.navCtrl.push(NewContactPage, {...contact, action: Action.UPDATE});
@@ -58,14 +52,6 @@ export class HomePage {
 
   isContactListEmpty(): boolean {
     return this.contactsService.isEmpty();
-  }
-
-  /**
-   * Update contacts each time view is entered
-   */
-  ionViewWillEnter() {
-// debugger
-    console.log('ion view will enter. contacts: ', this.contacts);
   }
 
 }

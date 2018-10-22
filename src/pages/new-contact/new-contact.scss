@@ -1,4 +1,15 @@
-// todo: borrar
-page-new-contact {
+.fondo-naranja {
+  background-color: orange;
+}
+.fondo-naranja:hover {
+  background-color: orange !important;
+}
+
+#select-country > div.item-inner {
+  border-bottom-style: solid;
+  border-bottom-color: lightgrey;
+  border-bottom-width: 1px;
+  padding-bottom: 7px;
+  padding-top: 7px;
 }
 

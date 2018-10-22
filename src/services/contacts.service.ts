@@ -1,22 +1,30 @@
+// todo: validation forms
+// todo: usar libreria para countries
+// todo: poner boton borrar esquina superior izquierda en vista contacto
+// todo: contacts list añadir clase on hover contact
+// todo: url routes
+// todo: search in list
+// todo: mejorar tests
 // todo: e2e testing
 // todo: complete unit testing
-// todo: validation forms
-// todo: url routes
 // todo: use functional programming: spread operator, lodash functional, etc. Avoid mutating functions
 // todo: arreglar lo de los imports con require para jest
-// todo: search in list
 
 import { Contact } from '../models/contact';
+// Jest testing framework needs lodash library be loaded using "require()"
 // @ts-ignore
 const sortBy = require('lodash/sortBy');
 // @ts-ignore
 const remove = require('lodash/remove');
 // @ts-ignore
-const findIndex= require('lodash/findIndex');
+const findIndex = require('lodash/findIndex');
+// @ts-ignore
+const isEqual = require('lodash/isEqual');
 
 // import sortBy from 'lodash/sortBy';
 // import remove from 'lodash/remove';
 // import findIndex from 'lodash/findIndex';
+// import isEqual from 'lodash/isEqual';
 
 
 /**
@@ -78,9 +86,6 @@ export class ContactsService{
   }
 
   add(contact: Contact): void {
-    // To sort aphabetically is needed to capitalize first letter
-    // todo: borrar
-// debugger
     contact = {
       ...contact,
       firstName: ContactsService.capitalizeFirstLetter(contact.firstName),
@@ -88,6 +93,7 @@ export class ContactsService{
     };
     this.contacts = [...this.contacts, contact];
     this.sortAlphabetically();
+    this.logToConsole();
   }
 
   remove(id: string): void {
@@ -96,23 +102,24 @@ export class ContactsService{
     } catch (error) {
       throw error;
     }
+    this.logToConsole();
   }
 
-  // todo: revisar
-  update(newContactData: Contact): void{
-debugger
-    const oldContactIndex: number = findIndex(this.contacts, {email: newContactData.email});
+  update(contact: Contact): boolean {
+    const oldContactIndex = findIndex(this.contacts, {email: contact.email});
     const oldContact = this.contacts[oldContactIndex];
-    if (oldContact === newContactData) {
+    if (isEqual(oldContact, contact)) {
       window.alert('Data has not changed');
-      return;
+      return false;
     } else {
-      oldContact.firstName = ContactsService.capitalizeFirstLetter(newContactData.firstName);
-      oldContact.lastName = ContactsService.capitalizeFirstLetter(newContactData.lastName);
-      oldContact.email = ContactsService.capitalizeFirstLetter(newContactData.email);
-      oldContact.country = ContactsService.capitalizeFirstLetter(newContactData.country);
+      oldContact.firstName = ContactsService.capitalizeFirstLetter(contact.firstName);
+      oldContact.lastName = ContactsService.capitalizeFirstLetter(contact.lastName);
+      oldContact.email = ContactsService.capitalizeFirstLetter(contact.email);
+      oldContact.country = ContactsService.capitalizeFirstLetter(contact.country);
+      this.sortAlphabetically();
+      this.logToConsole();
+      return true;
     }
-    this.sortAlphabetically();
   }
 
   saveAll() {
@@ -131,6 +138,7 @@ debugger
     } catch (error) {
       throw error;
     }
+    this.logToConsole();
   }
 
   isEmpty(): boolean {
@@ -139,5 +147,10 @@ debugger
 
   static capitalizeFirstLetter(text: string): string {
     return text.charAt(0).toUpperCase() + text.toLocaleLowerCase().slice(1);
+  }
+
+  logToConsole() {
+    console.log('✍ Contact List Log:');
+    console.table(this.getAll());
   }
 }

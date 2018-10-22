@@ -25,8 +25,7 @@ export class NewContactPage {
   ]);
 
   emailControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
+    Validators.email
   ]);
 
   countryControl = new FormControl('', [
@@ -40,15 +39,15 @@ export class NewContactPage {
     country: this.countryControl
   });
 
+  countries = ['Country1', 'Country2', 'Country3', 'Country4'];
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private contactsService: ContactsService) {
 
-// debugger
     const contactData = this.navParams.data;
     this.action = contactData.action;
     if (this.action === 'UPDATE') {
-      console.log('this.navParams.data', contactData);
       this.action = contactData.action;
       this.firstNameControl.setValue(contactData.firstName);
       this.lastNameControl.setValue(contactData.lastName);
@@ -57,22 +56,35 @@ export class NewContactPage {
     }
   }
 
-  onSubmitContactForm() {
-debugger
+  onSaveContact() {
     if (this.contactForm.valid) {
-      console.log('valid contact form, submitting');
       if (this.action === 'CREATE') {
         this.contactsService.add(this.contactForm.value);
+        this.goToPreviousPage();
       }
       if (this.action === 'UPDATE') {
-        this.contactsService.update(this.contactForm.value);
+        if(this.contactsService.update(this.contactForm.value)) {
+          this.goToPreviousPage();
+        }
       }
-      //todo: borrar
-      console.log('contact list', this.contactsService.getAll());
-      this.navCtrl.pop();
     } else {
-      //todo: refactorizar
-      console.log('invalid form');
+      console.log('Invalid Form');
+debugger
     }
+  }
+
+  onDeleteContact() {
+    if (window.confirm('Confirm Delete Contact')) {
+      this.contactsService.remove(this.contactForm.value.email);
+      this.goToPreviousPage();
+    }
+  }
+
+  onCancelBtn() {
+    this.goToPreviousPage();
+  }
+
+  goToPreviousPage() {
+    this.navCtrl.pop();
   }
 }

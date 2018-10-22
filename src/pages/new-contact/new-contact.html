@@ -1,15 +1,14 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>New Contact</ion-title>
+    <ion-title *ngIf="action === 'CREATE'">New Contact</ion-title>
+    <ion-title *ngIf="action === 'UPDATE'">Edit Contact</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <div>Contact Details:</div>
-  <div>{{ contact | json }}</div>
+  <form [formGroup]="contactForm">
 
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmitContactForm()">
     <ion-list>
       <ion-item>
         <ion-label floating>First Name</ion-label>
@@ -23,23 +22,33 @@
         <ion-label floating>Email</ion-label>
         <ion-input type="text" formControlName="email" clearInput></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label floating>Country</ion-label>
-        <ion-input type="text" formControlName="country" clearInput></ion-input>
+      <ion-item id="select-country">
+        <ion-label>Country</ion-label>
+        <ion-select padding formControlName="country">
+          <ion-option *ngFor="let country of countries"
+                      [value]="country">{{ country }}</ion-option>
+        </ion-select>
       </ion-item>
     </ion-list>
+
     <div text-center padding>
-      <button ion-button type="submit" icon-start>
-        <ion-icon name="return-left"></ion-icon>
+      <button ion-button icon-start (click)="onSaveContact()">
+        <ion-icon name="checkmark-circle"></ion-icon>
         Submit
       </button>
-      <!--<button ion-button icon-start color="danger">-->
-      <!--<ion-icon name="trash"></ion-icon>-->
-      <!--Remove-->
-      <!--</button>-->
+      <button *ngIf="action === 'UPDATE'" ion-button icon-start color="danger"
+              (click)="onDeleteContact()">
+      <ion-icon name="close-circle"></ion-icon>
+      Remove
+      </button>
+      <button *ngIf="action === 'CREATE'" ion-button icon-start
+              (click)="onCancelBtn()" class="fondo-naranja">
+        <ion-icon name="return-left"></ion-icon>
+        Cancel
+      </button>
     </div>
+
+
   </form>
-
-
 
 </ion-content>
