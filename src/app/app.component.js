@@ -7,13 +7,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 // import { Platform } from 'ionic-angular';
 // import { StatusBar } from '@ionic-native/status-bar';
 import { ContactsService } from '../services/contacts.service';
 import { HomePage } from '../pages/home/home';
+import { MenuController, NavController } from 'ionic-angular';
+import { NewContactPage } from '../pages/new-contact/new-contact';
+import { Action } from '../models/action';
 var MyApp = /** @class */ (function () {
-    function MyApp(memoryContactsService
+    function MyApp(contactsService, menuCtrl
         /* platform: Platform , statusBar: StatusBar */ ) {
         /*
             platform.ready().then(() => {
@@ -22,20 +25,33 @@ var MyApp = /** @class */ (function () {
               // statusBar.styleDefault();
             });
         */
-        this.memoryContactsService = memoryContactsService;
+        this.contactsService = contactsService;
+        this.menuCtrl = menuCtrl;
         this.rootPage = HomePage;
         /**
          * Just before unload the app, save the in-memory contact list to Local Storage
          */
         window.addEventListener('beforeunload', function () {
-            memoryContactsService.saveAll();
+            contactsService.saveAll();
         });
     }
+    MyApp.prototype.onNewContact = function () {
+        this.navCtrl.push(NewContactPage, { action: Action.CREATE });
+        this.menuCtrl.close();
+    };
+    MyApp.prototype.onHelp = function () {
+    };
+    MyApp.prototype.closeMenu = function () {
+    };
+    __decorate([
+        ViewChild('content'),
+        __metadata("design:type", NavController)
+    ], MyApp.prototype, "navCtrl", void 0);
     MyApp = __decorate([
         Component({
             templateUrl: 'app.html'
         }),
-        __metadata("design:paramtypes", [ContactsService
+        __metadata("design:paramtypes", [ContactsService, MenuController
             /* platform: Platform , statusBar: StatusBar */ ])
     ], MyApp);
     return MyApp;

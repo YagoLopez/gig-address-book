@@ -47,10 +47,10 @@ export class ContactsService{
    */
   loadContactsFromMemory(): void {
     this.contacts = [
-      {firstName: 'Cfirstname1', lastName: 'Lastname1', email: 'email1@domain.com', country: 'Country1'},
-      {firstName: 'Dfirstname2', lastName: 'Lastname2', email: 'email2@domain.com', country: 'Country2'},
-      {firstName: 'Afirstname3', lastName: 'Lastname3', email: 'email3@domain.com', country: 'Country3'},
-      {firstName: 'Bfirstname4', lastName: 'Lastname4', email: 'email4@domain.com', country: 'Country4'},
+      {id: 1, firstName: 'Cfirstname1', lastName: 'Lastname1', email: 'email1@domain.com', country: 'Country1'},
+      {id: 2, firstName: 'Dfirstname2', lastName: 'Lastname2', email: 'email2@domain.com', country: 'Country2'},
+      {id: 3, firstName: 'Afirstname3', lastName: 'Lastname3', email: 'email3@domain.com', country: 'Country3'},
+      {id: 4, firstName: 'Bfirstname4', lastName: 'Lastname4', email: 'email4@domain.com', country: 'Country4'},
     ]
   }
 
@@ -88,6 +88,7 @@ export class ContactsService{
   add(contact: Contact): void {
     contact = {
       ...contact,
+      id: ContactsService.generateId(),
       firstName: ContactsService.capitalizeFirstLetter(contact.firstName),
       lastName: ContactsService.capitalizeFirstLetter(contact.lastName),
     };
@@ -96,9 +97,9 @@ export class ContactsService{
     this.logToConsole();
   }
 
-  remove(id: string): void {
+  remove(id: string | number): void {
     try {
-      remove(this.contacts, {email: id});
+      remove(this.contacts, {id: id});
     } catch (error) {
       throw error;
     }
@@ -106,7 +107,7 @@ export class ContactsService{
   }
 
   update(contact: Contact): boolean {
-    const oldContactIndex = findIndex(this.contacts, {email: contact.email});
+    const oldContactIndex = findIndex(this.contacts, {id: contact.id});
     const oldContact = this.contacts[oldContactIndex];
     if (isEqual(oldContact, contact)) {
       window.alert('Data has not changed');
@@ -114,8 +115,8 @@ export class ContactsService{
     } else {
       oldContact.firstName = ContactsService.capitalizeFirstLetter(contact.firstName);
       oldContact.lastName = ContactsService.capitalizeFirstLetter(contact.lastName);
-      oldContact.email = ContactsService.capitalizeFirstLetter(contact.email);
-      oldContact.country = ContactsService.capitalizeFirstLetter(contact.country);
+      oldContact.email = contact.email;
+      oldContact.country = contact.country;
       this.sortAlphabetically();
       this.logToConsole();
       return true;
@@ -152,5 +153,9 @@ export class ContactsService{
   logToConsole() {
     console.log('✍ Contact List Log:');
     console.table(this.getAll());
+  }
+
+  static generateId() {
+    return Math.random().toString(36).substr(2, 8);
   }
 }

@@ -17,60 +17,65 @@ var NewContactPage = /** @class */ (function () {
         this.navParams = navParams;
         this.contactsService = contactsService;
         this.MIN_LENGTH = 4;
+        this.firstNameControl = new FormControl('', [
+            Validators.required,
+            Validators.minLength(this.MIN_LENGTH)
+        ]);
+        this.lastNameControl = new FormControl('', [
+            Validators.required,
+            Validators.minLength(this.MIN_LENGTH)
+        ]);
+        this.emailControl = new FormControl('', [
+            Validators.email
+        ]);
+        this.countryControl = new FormControl('', [
+            Validators.required
+        ]);
         this.contactForm = new FormGroup({
-            firstName: new FormControl('', [
-                Validators.required,
-                Validators.minLength(this.MIN_LENGTH)
-            ]),
-            lastName: new FormControl('', [
-                Validators.required,
-                Validators.minLength(this.MIN_LENGTH)
-            ]),
-            email: new FormControl('', [
-                Validators.required,
-                Validators.minLength(this.MIN_LENGTH),
-                Validators.email
-            ]),
-            country: new FormControl('', [
-                Validators.required
-            ]),
+            firstName: this.firstNameControl,
+            lastName: this.lastNameControl,
+            email: this.emailControl,
+            country: this.countryControl
         });
-        this.firstNameControl = this.contactForm.get('firstName');
-        this.lastNameControl = this.contactForm.get('lastName');
-        this.emailControl = this.contactForm.get('email');
-        this.countryControl = this.contactForm.get('country');
-        debugger;
+        this.countries = ['Country1', 'Country2', 'Country3', 'Country4'];
         var contactData = this.navParams.data;
-        if (contactData) {
-            console.log('this.navParams.data', contactData);
-            // this.contact = contactData;
+        this.action = contactData.action;
+        if (this.action === 'UPDATE') {
+            this.action = contactData.action;
             this.firstNameControl.setValue(contactData.firstName);
             this.lastNameControl.setValue(contactData.lastName);
             this.emailControl.setValue(contactData.email);
             this.countryControl.setValue(contactData.country);
         }
-        // else
-        // {
-        //   this.contact  = {
-        //     firstName: this.firstNameControl.value,
-        //     lastName: this.lastNameControl.value,
-        //     email: this.emailControl.value,
-        //     country: this.countryControl.value
-        //   };
-        // }
     }
-    NewContactPage.prototype.onSubmitContactForm = function () {
+    NewContactPage.prototype.onSaveContact = function () {
         if (this.contactForm.valid) {
-            console.log('valid contact form, submitting');
-            this.contactsService.add(this.contactForm.value);
-            //todo: borrar
-            console.log('contact list', this.contactsService.getAll());
-            this.navCtrl.pop();
+            if (this.action === 'CREATE') {
+                this.contactsService.add(this.contactForm.value);
+                this.goToPreviousPage();
+            }
+            if (this.action === 'UPDATE') {
+                if (this.contactsService.update(this.contactForm.value)) {
+                    this.goToPreviousPage();
+                }
+            }
         }
         else {
-            //todo: refactorizar
-            console.log('invalid form');
+            console.log('Invalid Form');
+            debugger;
         }
+    };
+    NewContactPage.prototype.onDeleteContact = function () {
+        if (window.confirm('Confirm Delete Contact')) {
+            this.contactsService.remove(this.contactForm.value.email);
+            this.goToPreviousPage();
+        }
+    };
+    NewContactPage.prototype.onCancelBtn = function () {
+        this.goToPreviousPage();
+    };
+    NewContactPage.prototype.goToPreviousPage = function () {
+        this.navCtrl.pop();
     };
     NewContactPage = __decorate([
         IonicPage(),

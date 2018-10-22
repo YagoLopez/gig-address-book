@@ -10,6 +10,10 @@
   <form [formGroup]="contactForm">
 
     <ion-list>
+      <ion-item *ngIf="action === 'UPDATE'">
+        <ion-label>Id</ion-label>
+        <ion-input type="text" formControlName="id" readonly></ion-input>
+      </ion-item>
       <ion-item>
         <ion-label floating>First Name</ion-label>
         <ion-input type="text" formControlName="firstName" clearInput></ion-input>
@@ -24,7 +28,7 @@
       </ion-item>
       <ion-item id="select-country">
         <ion-label>Country</ion-label>
-        <ion-select padding formControlName="country">
+        <ion-select formControlName="country">
           <ion-option *ngFor="let country of countries"
                       [value]="country">{{ country }}</ion-option>
         </ion-select>

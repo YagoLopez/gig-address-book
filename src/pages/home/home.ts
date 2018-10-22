@@ -35,9 +35,9 @@ export class HomePage {
     this.navCtrl.push(NewContactPage, {action: Action.CREATE});
   }
 
-  onRemoveContact(email: string, slidingContact: any) {
+  onRemoveContact(id: string | number, slidingContact: any) {
     if (window.confirm('Confirm Delete Contact')) {
-      this.contactsService.remove(email);
+      this.contactsService.remove(id);
       return;
     } else {
       slidingContact.close();

@@ -14,6 +14,8 @@ export class NewContactPage {
 
   action: string;
 
+  idControl = new FormControl();
+
   firstNameControl = new FormControl('', [
     Validators.required,
     Validators.minLength(this.MIN_LENGTH)
@@ -25,6 +27,7 @@ export class NewContactPage {
   ]);
 
   emailControl = new FormControl('', [
+    Validators.required,
     Validators.email
   ]);
 
@@ -33,6 +36,7 @@ export class NewContactPage {
   ]);
 
   contactForm = new FormGroup({
+    id: this.idControl,
     firstName: this.firstNameControl,
     lastName: this.lastNameControl,
     email: this.emailControl,
@@ -49,6 +53,7 @@ export class NewContactPage {
     this.action = contactData.action;
     if (this.action === 'UPDATE') {
       this.action = contactData.action;
+      this.idControl.setValue(contactData.id);
       this.firstNameControl.setValue(contactData.firstName);
       this.lastNameControl.setValue(contactData.lastName);
       this.emailControl.setValue(contactData.email);
@@ -69,13 +74,12 @@ export class NewContactPage {
       }
     } else {
       console.log('Invalid Form');
-debugger
     }
   }
 
   onDeleteContact() {
     if (window.confirm('Confirm Delete Contact')) {
-      this.contactsService.remove(this.contactForm.value.email);
+      this.contactsService.remove(this.contactForm.value.id);
       this.goToPreviousPage();
     }
   }
