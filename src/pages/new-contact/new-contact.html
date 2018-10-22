@@ -15,22 +15,49 @@
   <form [formGroup]="contactForm">
 
     <ion-list>
+      <!--id control-->
       <ion-item *ngIf="action === 'UPDATE'">
         <ion-label>Id</ion-label>
-        <ion-input type="text" formControlName="id" readonly></ion-input>
+        <ion-input type="text" formControlName="id" disabled></ion-input>
       </ion-item>
+
+      <!--firstName control-->
       <ion-item>
         <ion-label floating>First Name</ion-label>
-        <ion-input type="text" formControlName="firstName" clearInput [readonly]="editable"></ion-input>
+        <ion-input type="text" formControlName="firstName" clearInput></ion-input>
       </ion-item>
+      <p *ngIf="firstNameControl.hasError('required')" class="error">
+        ⛔ Required field
+      </p>
+      <p *ngIf="firstNameControl.hasError('minlength')" class="error">
+        ⛔ Minimum length is {{ MIN_LENGTH }}
+      </p>
+
+      <!--lastName control-->
       <ion-item>
         <ion-label floating>Last Name</ion-label>
-        <ion-input type="text" formControlName="lastName" clearInput [readonly]="editable"></ion-input>
+        <ion-input type="text" formControlName="lastName" clearInput></ion-input>
       </ion-item>
+      <p *ngIf="lastNameControl.hasError('required')" class="error">
+        ⛔ Required field
+      </p>
+      <p *ngIf="lastNameControl.hasError('minlength')" class="error">
+        ⛔ Minimum length is {{ MIN_LENGTH }}
+      </p>
+
+      <!--email control-->
       <ion-item>
         <ion-label floating>Email</ion-label>
-        <ion-input type="text" formControlName="email" clearInput [readonly]="editable"></ion-input>
+        <ion-input type="email" formControlName="email" clearInput></ion-input>
       </ion-item>
+      <p *ngIf="emailControl.hasError('required')" class="error">
+        ⛔ Required field
+      </p>
+      <p *ngIf="emailControl.hasError('email')" class="error">
+        ⛔ Invalid Email
+      </p>
+
+      <!--select country control-->
       <ion-item id="select-country">
         <ion-label>Country</ion-label>
         <ion-select formControlName="country">
@@ -38,19 +65,23 @@
                       [value]="country">{{ country }}</ion-option>
         </ion-select>
       </ion-item>
+      <!--/select country control-->
+
     </ion-list>
 
+    <!--buttons-->
     <div text-center padding>
-      <button ion-button icon-start (click)="onSaveContact()">
+      <button ion-button icon-start (click)="onSaveContact()" [disabled]="!contactForm.valid">
         <ion-icon name="checkmark-circle"></ion-icon>
         Submit
       </button>
       <button ion-button icon-start
               (click)="onCancelBtn()" class="fondo-naranja">
-        <ion-icon name="return-left"></ion-icon>
+        <ion-icon name="arrow-dropleft"></ion-icon>
         Cancel
       </button>
     </div>
+    <!--/buttons-->
 
   </form>
 

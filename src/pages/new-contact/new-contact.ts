@@ -14,7 +14,7 @@ export class NewContactPage {
   action: string;
   countries = ['Country1', 'Country2', 'Country3', 'Country4'];
 
-  idControl = new FormControl();
+  idControl = new FormControl({disabled: true});
 
   firstNameControl = new FormControl('', [
     Validators.required,
@@ -88,6 +88,12 @@ export class NewContactPage {
 
   goToPreviousPage() {
     this.navCtrl.pop();
+  }
+
+  ionViewWillEnter() {
+    this.firstNameControl.setErrors(null);
+    this.lastNameControl.setErrors(null);
+    this.emailControl.setErrors(null);
   }
 
 }
