@@ -1,13 +1,13 @@
-import { MemoryContactsService } from '../services/contacts.service';
+import { ContactsService } from '../services/contacts.service';
 import { Contact } from '../models/contact';
 
 describe('ContactsService', () => {
 
-  let contactsService: MemoryContactsService;
+  let contactsService: ContactsService;
   let contacts: Contact[];
 
   beforeEach(() => {
-    contactsService = new MemoryContactsService();
+    contactsService = new ContactsService();
     contactsService.loadContactsFromMemory();
     contacts = contactsService.getAll();
   });

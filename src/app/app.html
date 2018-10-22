@@ -9,18 +9,9 @@
     </ion-header>
 
     <ion-list id="left-side-menu">
-      <button ion-item (click)="openPage(homePage)">
-        Home
-      </button>
-      <button ion-item (click)="openPage(friendsPage)">
-        Friends
-      </button>
-      <button ion-item (click)="openPage(eventsPage)">
-        Events
-      </button>
-      <button ion-item (click)="closeMenu()">
-        Close Menu
-      </button>
+      <button ion-item (click)="onNewContact()">New Contact</button>
+      <button ion-item (click)="onHelp()">Help</button>
+      <button ion-item menuClose detail-none>Close Menu</button>
     </ion-list>
   </ion-menu>
 

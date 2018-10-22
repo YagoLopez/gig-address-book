@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ContactsService } from '../../services/contacts.service';
-import { DetailPage } from '../detail/detail';
 import { NewContactPage } from '../new-contact/new-contact';
 var HomePage = /** @class */ (function () {
     function HomePage(navCtrl, contactsService) {
@@ -18,22 +17,43 @@ var HomePage = /** @class */ (function () {
         this.contactsService = contactsService;
         // urlAvatar: string = "https://loremflickr.com/100/100/face?random=1";
         this.urlAvatar = "assets/imgs/1.png";
+        console.log('HomePage constructor');
         contactsService.loadContactsFromLocalStorage();
-        if (contactsService.getAll().length == 0) {
+        if (contactsService.isEmpty()) {
             contactsService.loadContactsFromMemory();
         }
         contactsService.sortAlphabetically();
         this.contacts = contactsService.getAll();
         console.log('contacts', this.contacts);
     }
-    HomePage.prototype.onViewContactDetail = function (contact) {
-        this.navCtrl.push(DetailPage, contact);
+    HomePage.prototype.onViewContact = function (contact) {
+        this.navCtrl.push(NewContactPage, contact);
     };
     HomePage.prototype.onNewContact = function () {
         this.navCtrl.push(NewContactPage);
     };
-    HomePage.prototype.onRemoveContact = function (email) {
-        this.contactsService.remove(email);
+    HomePage.prototype.onRemoveContact = function (email, slidingContact) {
+        if (window.confirm('Confirm Delete Contact')) {
+            this.contactsService.remove(email);
+            return;
+        }
+        else {
+            slidingContact.close();
+        }
+    };
+    HomePage.prototype.onRemoveAll = function () {
+        if (window.confirm('Confirm remove all contacts')) {
+            this.contactsService.removeAll();
+        }
+    };
+    HomePage.prototype.isContactListEmpty = function () {
+        return this.contactsService.isEmpty();
+    };
+    /**
+     * Update contacts each time view is entered
+     */
+    HomePage.prototype.ionViewWillEnter = function () {
+        this.contacts = this.contactsService.getAll();
     };
     HomePage = __decorate([
         Component({

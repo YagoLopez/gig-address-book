@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NewContactPage } from './new-contact';
 var NewContactPageModule = /** @class */ (function () {
     function NewContactPageModule() {
@@ -17,6 +18,7 @@ var NewContactPageModule = /** @class */ (function () {
             ],
             imports: [
                 IonicPageModule.forChild(NewContactPage),
+                ReactiveFormsModule
             ],
         })
     ], NewContactPageModule);

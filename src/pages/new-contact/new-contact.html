@@ -4,24 +4,42 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-  <ion-list>
 
-    <ion-item>
-      <ion-label floating>First Name</ion-label>
-      <ion-input type="text" clearInput></ion-input>
-    </ion-item>
+  <div>Contact Details:</div>
+  <div>{{ contact | json }}</div>
 
-    <ion-item>
-      <ion-label floating>Last Name</ion-label>
-      <ion-input type="text" clearInput></ion-input>
-    </ion-item>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmitContactForm()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>First Name</ion-label>
+        <ion-input type="text" formControlName="firstName" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Last Name</ion-label>
+        <ion-input type="text" formControlName="lastName" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="text" formControlName="email" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Country</ion-label>
+        <ion-input type="text" formControlName="country" clearInput></ion-input>
+      </ion-item>
+    </ion-list>
+    <div text-center padding>
+      <button ion-button type="submit" icon-start>
+        <ion-icon name="return-left"></ion-icon>
+        Submit
+      </button>
+      <!--<button ion-button icon-start color="danger">-->
+      <!--<ion-icon name="trash"></ion-icon>-->
+      <!--Remove-->
+      <!--</button>-->
+    </div>
+  </form>
 
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type="text" clearInput></ion-input>
-    </ion-item>
 
-  </ion-list>
+
 </ion-content>

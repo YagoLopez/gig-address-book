@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, NavController } from 'ionic-angular';
 // import { StatusBar } from '@ionic-native/status-bar';
-import { ContactDetailPageModule } from '../pages/detail/detail.module';
 import { NewContactPageModule } from '../pages/new-contact/new-contact.module';
 
 import { MyApp } from './app.component';
@@ -17,7 +16,6 @@ import { ContactsService } from '../services/contacts.service';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    ContactDetailPageModule,
     NewContactPageModule
   ],
   bootstrap: [IonicApp],

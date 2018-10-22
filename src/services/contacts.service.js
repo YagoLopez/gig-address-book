@@ -2,9 +2,28 @@
 // todo: complete unit testing
 // todo: validation forms
 // todo: url routes
-import * as _ from 'lodash';
+// todo: use functional programming: spread operator, lodash functional, etc. Avoid mutating functions
+// todo: arreglar lo de los imports con require para jest
+// todo: search in list
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+// @ts-ignore
+var sortBy = require('lodash/sortBy');
+// @ts-ignore
+var remove = require('lodash/remove');
+// @ts-ignore
+var findIndex = require('lodash/findIndex');
+// import sortBy from 'lodash/sortBy';
+// import remove from 'lodash/remove';
+// import findIndex from 'lodash/findIndex';
 /**
- * Contacts Repository Service
+ * Contacts Service implements the Repository Pattern for Contact model domain (aka entity)
  */
 var ContactsService = /** @class */ (function () {
     function ContactsService() {
@@ -24,7 +43,7 @@ var ContactsService = /** @class */ (function () {
             }
         };
         if (!this.isLocalStorageAvailable()) {
-            var msg = 'Browser Local Storage not availalble';
+            var msg = 'Local Storage not availalble in browser';
             window.alert(msg);
             throw new Error(msg);
         }
@@ -34,10 +53,10 @@ var ContactsService = /** @class */ (function () {
      */
     ContactsService.prototype.loadContactsFromMemory = function () {
         this.contacts = [
-            { firstName: 'cFirstName1', lastName: 'LastName1', email: 'email1@domain.com', country: 'Country1' },
-            { firstName: 'dFirstName2', lastName: 'LastName2', email: 'email2@domain.com', country: 'Country2' },
-            { firstName: 'aFirstName3', lastName: 'LastName3', email: 'email3@domain.com', country: 'Country3' },
-            { firstName: 'bFirstName4', lastName: 'LastName4', email: 'email4@domain.com', country: 'Country4' },
+            { firstName: 'Cfirstname1', lastName: 'Lastname1', email: 'email1@domain.com', country: 'Country1' },
+            { firstName: 'Dfirstname2', lastName: 'Lastname2', email: 'email2@domain.com', country: 'Country2' },
+            { firstName: 'Afirstname3', lastName: 'Lastname3', email: 'email3@domain.com', country: 'Country3' },
+            { firstName: 'Bfirstname4', lastName: 'Lastname4', email: 'email4@domain.com', country: 'Country4' },
         ];
     };
     /**
@@ -51,30 +70,53 @@ var ContactsService = /** @class */ (function () {
         return this.contacts;
     };
     ContactsService.prototype.sortAlphabetically = function () {
-        this.contacts = _.sortBy(this.contacts, ['firstName', 'lastName']);
+        this.contacts = sortBy(this.contacts, ['firstName', 'lastName']);
     };
     ContactsService.prototype.add = function (contact) {
-        this.contacts.push(contact);
+        // To sort aphabetically is needed to capitalize first letter
+        // todo: borrar
+        // debugger
+        contact = __assign({}, contact, { firstName: ContactsService.capitalizeFirstLetter(contact.firstName), lastName: ContactsService.capitalizeFirstLetter(contact.lastName) });
+        this.contacts = this.contacts.concat([contact]);
         this.sortAlphabetically();
     };
     ContactsService.prototype.remove = function (id) {
-        if (window.confirm('Confirm Delete Contact')) {
-            try {
-                _.remove(this.contacts, { email: id });
-            }
-            catch (error) {
-                throw new Error(error);
-            }
+        try {
+            remove(this.contacts, { email: id });
+        }
+        catch (error) {
+            throw error;
         }
     };
     // todo: revisar
     ContactsService.prototype.update = function (emailAsId) {
-        var contactIndex = _.findIndex(this.contacts, { email: emailAsId });
+        var contactIndex = findIndex(this.contacts, { email: emailAsId });
         this.sortAlphabetically();
         return this.contacts[contactIndex];
     };
     ContactsService.prototype.saveAll = function () {
         localStorage.setItem('contacts', JSON.stringify(this.contacts));
+        try {
+            localStorage.setItem('contacts', JSON.stringify(this.contacts));
+        }
+        catch (error) {
+            throw error;
+        }
+    };
+    ContactsService.prototype.removeAll = function () {
+        try {
+            this.contacts.length = 0;
+            localStorage.clear();
+        }
+        catch (error) {
+            throw error;
+        }
+    };
+    ContactsService.prototype.isEmpty = function () {
+        return this.contacts.length == 0;
+    };
+    ContactsService.capitalizeFirstLetter = function (text) {
+        return text.charAt(0).toUpperCase() + text.toLocaleLowerCase().slice(1);
     };
     return ContactsService;
 }());
