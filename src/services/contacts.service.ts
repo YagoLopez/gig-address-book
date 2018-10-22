@@ -1,3 +1,5 @@
+// todo: contact detail editable
+// todo: cambiar nombre new-contact pagina
 // todo: validation forms
 // todo: usar libreria para countries
 // todo: poner boton borrar esquina superior izquierda en vista contacto

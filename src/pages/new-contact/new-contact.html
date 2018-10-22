@@ -1,7 +1,12 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title *ngIf="action === 'CREATE'">New Contact</ion-title>
-    <ion-title *ngIf="action === 'UPDATE'">Edit Contact</ion-title>
+    <ion-title *ngIf="action === 'UPDATE'">Contact</ion-title>
+    <ion-buttons end *ngIf="action === 'UPDATE'">
+      <button ion-button icon-only (click)="onRemoveContact()" title="Remove Contact">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -16,15 +21,15 @@
       </ion-item>
       <ion-item>
         <ion-label floating>First Name</ion-label>
-        <ion-input type="text" formControlName="firstName" clearInput></ion-input>
+        <ion-input type="text" formControlName="firstName" clearInput [readonly]="editable"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Last Name</ion-label>
-        <ion-input type="text" formControlName="lastName" clearInput></ion-input>
+        <ion-input type="text" formControlName="lastName" clearInput [readonly]="editable"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Email</ion-label>
-        <ion-input type="text" formControlName="email" clearInput></ion-input>
+        <ion-input type="text" formControlName="email" clearInput [readonly]="editable"></ion-input>
       </ion-item>
       <ion-item id="select-country">
         <ion-label>Country</ion-label>
@@ -40,18 +45,12 @@
         <ion-icon name="checkmark-circle"></ion-icon>
         Submit
       </button>
-      <button *ngIf="action === 'UPDATE'" ion-button icon-start color="danger"
-              (click)="onDeleteContact()">
-      <ion-icon name="close-circle"></ion-icon>
-      Remove
-      </button>
-      <button *ngIf="action === 'CREATE'" ion-button icon-start
+      <button ion-button icon-start
               (click)="onCancelBtn()" class="fondo-naranja">
         <ion-icon name="return-left"></ion-icon>
         Cancel
       </button>
     </div>
-
 
   </form>
 

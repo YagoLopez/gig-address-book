@@ -11,8 +11,8 @@ import { ContactsService } from '../../services/contacts.service';
 export class NewContactPage {
 
   MIN_LENGTH = 4;
-
   action: string;
+  countries = ['Country1', 'Country2', 'Country3', 'Country4'];
 
   idControl = new FormControl();
 
@@ -42,8 +42,6 @@ export class NewContactPage {
     email: this.emailControl,
     country: this.countryControl
   });
-
-  countries = ['Country1', 'Country2', 'Country3', 'Country4'];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -77,7 +75,7 @@ export class NewContactPage {
     }
   }
 
-  onDeleteContact() {
+  onRemoveContact() {
     if (window.confirm('Confirm Delete Contact')) {
       this.contactsService.remove(this.contactForm.value.id);
       this.goToPreviousPage();
@@ -91,4 +89,5 @@ export class NewContactPage {
   goToPreviousPage() {
     this.navCtrl.pop();
   }
+
 }
