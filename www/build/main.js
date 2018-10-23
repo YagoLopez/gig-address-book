@@ -117,11 +117,15 @@ var HomePage = /** @class */ (function () {
             contactsService.loadContactsFromMemory();
         }
         contactsService.sortAlphabetically();
+        this.contacts = this.contactsService.getAll();
         this.contactsService.logToConsole();
     }
     Object.defineProperty(HomePage.prototype, "contacts", {
         get: function () {
-            return this.contactsService.getAll();
+            return this._contacts;
+        },
+        set: function (contacts) {
+            this._contacts = contacts;
         },
         enumerable: true,
         configurable: true
@@ -150,13 +154,29 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.isContactListEmpty = function () {
         return this.contactsService.isEmpty();
     };
+    HomePage.prototype.ionViewWillEnter = function () {
+        this.contacts = this.contactsService.getAll();
+    };
+    HomePage.prototype.filterContacts = function ($event) {
+        // Reset items back to all of the items
+        this.contacts = this.contactsService.getAll();
+        // set val to the value of the searchbar
+        var val = $event.target.value;
+        // if the value is an empty string don't filter the items
+        if (val && val.trim() != '') {
+            this.contacts = this.contacts.filter(function (contact) {
+                return (contact.firstName.toLowerCase().indexOf(val.toLowerCase()) > -1);
+            });
+        }
+    };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <button ion-button icon-only menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Address Book</ion-title>\n\n    <ion-buttons end *ngIf="!isContactListEmpty()">\n\n      <button ion-button icon-only (click)="onRemoveAll()" title="Remove All Contacts">\n\n        <ion-icon name="trash"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n\n\n<ion-content class="fade-in-long">\n\n\n\n  <ion-list inset *ngIf="contacts.length > 0" style="padding-top: 15px;">\n\n    <ion-item-sliding *ngFor="let contact of contacts" #slidingContact>\n\n      <button ion-item (click)="onViewContact(contact)" title="View Contact" class="item-hover">\n\n        <ion-avatar item-start>\n\n          <img [src]="urlAvatar" alt="">\n\n        </ion-avatar>\n\n        <h2>{{ contact.firstName }} {{ contact.lastName }}</h2>\n\n        <p>{{ contact.email }}</p>\n\n        <button ion-button clear item-end>\n\n          <ion-icon name="play"></ion-icon>\n\n        </button>\n\n      </button>\n\n      <ion-item-options side="right">\n\n        <button ion-button color="danger" (click)="onRemoveContact(contact.id, slidingContact)">\n\n          <ion-icon name="trash"></ion-icon>\n\n          Delete\n\n        </button>\n\n      </ion-item-options>\n\n    </ion-item-sliding>\n\n  </ion-list>\n\n\n\n  <div *ngIf="contacts.length < 1" class="centered-in-page">\n\n    <img src="assets/imgs/contacts-ios-grey.svg" class="logo-emtpy-list"/>\n\n    <div class="text-empty-list">Address Book is empty</div>\n\n  </div>\n\n\n\n  <ion-fab right bottom class="fab-position">\n\n    <button ion-fab color="primary" (click)="onNewContact()" title="New Contact">\n\n      <ion-icon name="add"></ion-icon>\n\n    </button>\n\n  </ion-fab>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <button ion-button icon-only menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Address Book</ion-title>\n\n    <ion-buttons end *ngIf="!isContactListEmpty()">\n\n      <button ion-button icon-only (click)="onRemoveAll()" title="Remove All Contacts">\n\n        <ion-icon name="trash"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n\n\n<ion-content class="fade-in-long">\n\n\n\n  <ion-searchbar (ionInput)="filterContacts($event)" padding></ion-searchbar>\n\n\n\n  <ion-list inset *ngIf="contacts.length > 0">\n\n    <ion-item-sliding *ngFor="let contact of contacts" #slidingContact>\n\n      <button ion-item (click)="onViewContact(contact)" title="View Contact" class="item-hover">\n\n        <ion-avatar item-start>\n\n          <img [src]="urlAvatar" alt="">\n\n        </ion-avatar>\n\n        <h2>{{ contact.firstName }} {{ contact.lastName }}</h2>\n\n        <p>{{ contact.email }}</p>\n\n        <button ion-button clear item-end>\n\n          <ion-icon name="play"></ion-icon>\n\n        </button>\n\n      </button>\n\n      <ion-item-options side="right">\n\n        <button ion-button color="danger" (click)="onRemoveContact(contact.id, slidingContact)">\n\n          <ion-icon name="trash"></ion-icon>\n\n          Delete\n\n        </button>\n\n      </ion-item-options>\n\n    </ion-item-sliding>\n\n  </ion-list>\n\n\n\n  <div *ngIf="contacts.length < 1" class="centered-in-page">\n\n    <img src="assets/imgs/contacts-ios-grey.svg" class="logo-emtpy-list"/>\n\n    <div class="text-empty-list">Address Book is empty</div>\n\n  </div>\n\n\n\n  <ion-fab right bottom class="fab-position">\n\n    <button ion-fab color="primary" (click)="onNewContact()" title="New Contact">\n\n      <ion-icon name="add"></ion-icon>\n\n    </button>\n\n  </ion-fab>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_contacts_service__["a" /* ContactsService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_contacts_service__["a" /* ContactsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_contacts_service__["a" /* ContactsService */]) === "function" && _b || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=home.js.map

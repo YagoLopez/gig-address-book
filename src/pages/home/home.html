@@ -16,7 +16,9 @@
 
 <ion-content class="fade-in-long">
 
-  <ion-list inset *ngIf="contacts.length > 0" style="padding-top: 15px;">
+  <ion-searchbar (ionInput)="filterContacts($event)" padding></ion-searchbar>
+
+  <ion-list inset *ngIf="contacts.length > 0">
     <ion-item-sliding *ngFor="let contact of contacts" #slidingContact>
       <button ion-item (click)="onViewContact(contact)" title="View Contact" class="item-hover">
         <ion-avatar item-start>
