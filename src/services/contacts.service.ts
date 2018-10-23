@@ -1,5 +1,3 @@
-// todo: contacts list añadir clase on hover contact
-// todo: search in list
 // todo: repasar README.md
 // todo: cambiar nombre new-contact pagina
 // todo: usar libreria para countries
@@ -22,7 +20,7 @@ const isEqual = require('lodash/isEqual');
  */
 export class ContactsService{
 
-  private contacts: Contact[];
+  public contacts: Contact[];
 
   constructor() {
     if (!this.isLocalStorageAvailable()) {

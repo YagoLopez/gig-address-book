@@ -110,8 +110,8 @@ var HomePage = /** @class */ (function () {
     function HomePage(navCtrl, contactsService) {
         this.navCtrl = navCtrl;
         this.contactsService = contactsService;
-        // urlAvatar: string = "https://loremflickr.com/100/100/face?random=1";
         this.urlAvatar = "assets/imgs/1.png";
+        // todo: borrar
         contactsService.loadContactsFromLocalStorage();
         if (contactsService.isEmpty()) {
             contactsService.loadContactsFromMemory();
@@ -529,8 +529,6 @@ var NewContactPage = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactsService; });
-// todo: contacts list añadir clase on hover contact
-// todo: search in list
 // todo: repasar README.md
 // todo: cambiar nombre new-contact pagina
 // todo: usar libreria para countries

@@ -11,7 +11,6 @@ import { NewContactPage } from '../new-contact/new-contact';
 })
 export class HomePage {
 
-  // urlAvatar: string = "https://loremflickr.com/100/100/face?random=1";
   urlAvatar: string = "assets/imgs/1.png";
 
   get contacts(): Contact[] {
@@ -19,6 +18,7 @@ export class HomePage {
   };
 
   constructor(public navCtrl: NavController, private contactsService: ContactsService) {
+    // todo: borrar
     contactsService.loadContactsFromLocalStorage();
     if (contactsService.isEmpty()) {
       contactsService.loadContactsFromMemory()
