@@ -22,7 +22,7 @@ var NewContactPage = /** @class */ (function () {
         this.contactsService = contactsService;
         this.MIN_LENGTH = 4;
         this.countries = ['Spain', 'France', 'Germany', 'Italy', 'USA'];
-        this.idControl = new FormControl({ disabled: true });
+        this.idControl = new FormControl({disabled: true});
         this.firstNameControl = new FormControl('', [
             Validators.required,
             Validators.minLength(this.MIN_LENGTH)

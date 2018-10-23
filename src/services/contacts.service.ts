@@ -1,13 +1,12 @@
-// todo: complete unit testing
-// todo: cambiar nombre new-contact pagina
-// todo: usar libreria para countries
 // todo: contacts list añadir clase on hover contact
 // todo: search in list
+// todo: repasar README.md
+// todo: cambiar nombre new-contact pagina
+// todo: usar libreria para countries
 // todo: e2e testing
-// todo: arreglar lo de los imports con require para jest
 
 import { Contact } from '../models/contact';
-// Jest testing framework needs lodash library to be loaded using "require()"
+// Jest testing framework needs to use "require()" to load "lodash" library instead of es6 imports
 // @ts-ignore
 const sortBy = require('lodash/sortBy');
 // @ts-ignore
@@ -16,11 +15,6 @@ const remove = require('lodash/remove');
 const findIndex = require('lodash/findIndex');
 // @ts-ignore
 const isEqual = require('lodash/isEqual');
-
-// import sortBy from 'lodash/sortBy';
-// import remove from 'lodash/remove';
-// import findIndex from 'lodash/findIndex';
-// import isEqual from 'lodash/isEqual';
 
 
 /**
@@ -119,6 +113,9 @@ export class ContactsService{
     }
   }
 
+  /**
+   * Save all contacts to localStorage
+   */
   saveAll() {
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
     try {
@@ -128,6 +125,9 @@ export class ContactsService{
     }
   }
 
+  /**
+   * Remove all contacts from localStorage
+   */
   removeAll() {
     try {
       this.contacts.length = 0;

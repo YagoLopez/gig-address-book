@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform } from 'ionic-angular';
-// import { StatusBar } from '@ionic-native/status-bar';
 import { ContactsService } from '../services/contacts.service';
 import { HomePage } from '../pages/home/home';
 import { MenuController, NavController } from 'ionic-angular';
@@ -17,17 +16,10 @@ export class MyApp {
   @ViewChild('content') navCtrl: NavController;
   public devWidth;
 
+  // tslint:disable-next-line
   constructor(private contactsService: ContactsService,
               private menuCtrl: MenuController,
-              private platform: Platform /*, statusBar: StatusBar*/
-              ) {
-/*
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      // statusBar.styleDefault();
-    });
-*/
+              private platform: Platform) {
 
     /**
      * Just before unload the app, save the in-memory contact list to Local Storage
