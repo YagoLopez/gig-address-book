@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-// import { Platform } from 'ionic-angular';
+import { Platform } from 'ionic-angular';
 // import { StatusBar } from '@ionic-native/status-bar';
 import { ContactsService } from '../services/contacts.service';
 import { HomePage } from '../pages/home/home';
@@ -15,9 +15,12 @@ export class MyApp {
 
   rootPage = HomePage;
   @ViewChild('content') navCtrl: NavController;
+  public devWidth;
 
-  constructor(private contactsService: ContactsService, public menuCtrl: MenuController
-              /* platform: Platform , statusBar: StatusBar */) {
+  constructor(private contactsService: ContactsService,
+              private menuCtrl: MenuController,
+              private platform: Platform /*, statusBar: StatusBar*/
+              ) {
 /*
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -32,6 +35,8 @@ export class MyApp {
     window.addEventListener('beforeunload', () => {
       contactsService.saveAll();
     });
+
+    this.devWidth = this.platform.width();
   }
 
   onNewContact() {
@@ -44,8 +49,8 @@ export class MyApp {
     this.menuCtrl.close();
   }
 
-  closeMenu() {
-
+  ngDoCheck() {
+    this.devWidth = this.platform.width();
   }
 }
 

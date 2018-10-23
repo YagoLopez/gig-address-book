@@ -12,31 +12,30 @@
   </ion-navbar>
 </ion-header>
 
+
+
 <ion-content class="fade-in-long">
 
-  <div *ngIf="contacts.length > 0">
-
-    <ion-list inset>
-      <ion-item-sliding *ngFor="let contact of contacts" #slidingContact>
-        <button ion-item (click)="onViewContact(contact)" title="View Contact">
-          <ion-avatar item-start>
-            <img [src]="urlAvatar" alt="">
-          </ion-avatar>
-          <h2>{{ contact.firstName }} {{ contact.lastName }}</h2>
-          <p>{{ contact.email }}</p>
-          <button ion-button clear item-end>
-            <ion-icon name="play"></ion-icon>
-          </button>
+  <ion-list inset *ngIf="contacts.length > 0" style="padding-top: 15px;">
+    <ion-item-sliding *ngFor="let contact of contacts" #slidingContact>
+      <button ion-item (click)="onViewContact(contact)" title="View Contact">
+        <ion-avatar item-start>
+          <img [src]="urlAvatar" alt="">
+        </ion-avatar>
+        <h2>{{ contact.firstName }} {{ contact.lastName }}</h2>
+        <p>{{ contact.email }}</p>
+        <button ion-button clear item-end>
+          <ion-icon name="play"></ion-icon>
         </button>
-        <ion-item-options side="right">
-          <button ion-button color="danger" (click)="onRemoveContact(contact.id, slidingContact)">
-            <ion-icon name="trash"></ion-icon>
-            Delete
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-list>
-  </div>
+      </button>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="onRemoveContact(contact.id, slidingContact)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
   <div *ngIf="contacts.length < 1" class="centered-in-page">
     <img src="assets/imgs/contacts-ios-grey.svg" class="logo-emtpy-list"/>

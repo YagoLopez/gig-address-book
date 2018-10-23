@@ -16,8 +16,8 @@
         <ion-icon name="help-circle"></ion-icon>
         Help
       </button>
-      <div text-center padding>
-        <button ion-button icon-start menuClose detail-none clear>
+      <div text-center padding [hidden]="devWidth > 760">
+        <button menuToggle ion-button icon-start detail-none clear>
           <ion-icon name="close-circle"></ion-icon>
           Close
         </button>
