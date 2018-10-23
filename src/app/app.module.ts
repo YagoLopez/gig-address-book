@@ -7,6 +7,9 @@ import { NewContactPageModule } from '../pages/new-contact/new-contact.module';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ContactsService } from '../services/contacts.service';
+import { NewContactPage } from '../pages/new-contact/new-contact';
+
+
 
 @NgModule({
   declarations: [
@@ -15,7 +18,12 @@ import { ContactsService } from '../services/contacts.service';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {}, {
+      links: [
+        {component: HomePage, name: 'Home', segment: ''},
+        {component: NewContactPage, name: 'Contact', segment: 'contact', defaultHistory: [HomePage]}
+      ]
+    }),
     NewContactPageModule
   ],
   bootstrap: [IonicApp],

@@ -3,7 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactsService } from '../../services/contacts.service';
 
-@IonicPage()
+// @IonicPage({
+//   name: 'contact',
+//   segment: 'contact'
+// })
 @Component({
   selector: 'page-new-contact',
   templateUrl: 'new-contact.html',
@@ -12,7 +15,7 @@ export class NewContactPage {
 
   MIN_LENGTH = 4;
   action: string;
-  countries = ['Country1', 'Country2', 'Country3', 'Country4'];
+  countries = ['Spain', 'France', 'Germany', 'Italy', 'USA'];
 
   idControl = new FormControl({disabled: true});
 

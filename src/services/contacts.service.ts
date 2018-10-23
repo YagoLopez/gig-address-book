@@ -1,14 +1,9 @@
-// todo: validation forms
+// todo: complete unit testing
 // todo: cambiar nombre new-contact pagina
 // todo: usar libreria para countries
-// todo: poner boton borrar esquina superior izquierda en vista contacto
 // todo: contacts list añadir clase on hover contact
-// todo: url routes
 // todo: search in list
-// todo: mejorar tests
 // todo: e2e testing
-// todo: complete unit testing
-// todo: use functional programming: spread operator, lodash functional, etc. Avoid mutating functions
 // todo: arreglar lo de los imports con require para jest
 
 import { Contact } from '../models/contact';
@@ -51,7 +46,7 @@ export class ContactsService{
       {id: 1, firstName: 'Cfirstname1', lastName: 'Lastname1', email: 'email1@domain.com', country: 'Country1'},
       {id: 2, firstName: 'Dfirstname2', lastName: 'Lastname2', email: 'email2@domain.com', country: 'Country2'},
       {id: 3, firstName: 'Afirstname3', lastName: 'Lastname3', email: 'email3@domain.com', country: 'Country3'},
-      {id: 4, firstName: 'Bfirstname4', lastName: 'Lastname4', email: 'email4@domain.com', country: 'Country4'},
+      {id: 4, firstName: 'Bfirstname4', lastName: 'Lastname4', email: 'email4@domain.com', country: 'Country4'}
     ]
   }
 
