@@ -16,13 +16,6 @@
 
   <div *ngIf="contacts.length > 0">
 
-    <div padding text-center class="color-blue">
-      <ion-icon name="arrow-round-forward"></ion-icon>
-      <span class="margin-left-subtitle">Drag from the left border to open the side menu</span><br>
-      <ion-icon name="arrow-round-back"></ion-icon>
-      <span class="margin-left-subtitle">Swipe contact to the left to remove it</span>
-    </div>
-
     <ion-list inset>
       <ion-item-sliding *ngFor="let contact of contacts" #slidingContact>
         <button ion-item (click)="onViewContact(contact)" title="View Contact">

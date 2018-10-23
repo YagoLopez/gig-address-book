@@ -6,6 +6,7 @@ import { HomePage } from '../pages/home/home';
 import { MenuController, NavController } from 'ionic-angular';
 import { NewContactPage } from '../pages/new-contact/new-contact';
 import { Action } from '../models/action';
+import { HelpPage } from '../pages/help/help';
 
 @Component({
   templateUrl: 'app.html'
@@ -39,7 +40,8 @@ export class MyApp {
   }
 
   onHelp() {
-
+    this.navCtrl.push(HelpPage);
+    this.menuCtrl.close();
   }
 
   closeMenu() {

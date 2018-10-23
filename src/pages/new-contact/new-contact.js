@@ -8,15 +8,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactsService } from '../../services/contacts.service';
+// @IonicPage({
+//   name: 'contact',
+//   segment: 'contact'
+// })
 var NewContactPage = /** @class */ (function () {
     function NewContactPage(navCtrl, navParams, contactsService) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.contactsService = contactsService;
         this.MIN_LENGTH = 4;
+        this.countries = ['Spain', 'France', 'Germany', 'Italy', 'USA'];
+        this.idControl = new FormControl({ disabled: true });
         this.firstNameControl = new FormControl('', [
             Validators.required,
             Validators.minLength(this.MIN_LENGTH)
@@ -26,22 +32,24 @@ var NewContactPage = /** @class */ (function () {
             Validators.minLength(this.MIN_LENGTH)
         ]);
         this.emailControl = new FormControl('', [
+            Validators.required,
             Validators.email
         ]);
         this.countryControl = new FormControl('', [
             Validators.required
         ]);
         this.contactForm = new FormGroup({
+            id: this.idControl,
             firstName: this.firstNameControl,
             lastName: this.lastNameControl,
             email: this.emailControl,
             country: this.countryControl
         });
-        this.countries = ['Country1', 'Country2', 'Country3', 'Country4'];
         var contactData = this.navParams.data;
         this.action = contactData.action;
         if (this.action === 'UPDATE') {
             this.action = contactData.action;
+            this.idControl.setValue(contactData.id);
             this.firstNameControl.setValue(contactData.firstName);
             this.lastNameControl.setValue(contactData.lastName);
             this.emailControl.setValue(contactData.email);
@@ -62,12 +70,11 @@ var NewContactPage = /** @class */ (function () {
         }
         else {
             console.log('Invalid Form');
-            debugger;
         }
     };
-    NewContactPage.prototype.onDeleteContact = function () {
+    NewContactPage.prototype.onRemoveContact = function () {
         if (window.confirm('Confirm Delete Contact')) {
-            this.contactsService.remove(this.contactForm.value.email);
+            this.contactsService.remove(this.contactForm.value.id);
             this.goToPreviousPage();
         }
     };
@@ -77,8 +84,12 @@ var NewContactPage = /** @class */ (function () {
     NewContactPage.prototype.goToPreviousPage = function () {
         this.navCtrl.pop();
     };
+    NewContactPage.prototype.ionViewWillEnter = function () {
+        this.firstNameControl.setErrors(null);
+        this.lastNameControl.setErrors(null);
+        this.emailControl.setErrors(null);
+    };
     NewContactPage = __decorate([
-        IonicPage(),
         Component({
             selector: 'page-new-contact',
             templateUrl: 'new-contact.html',

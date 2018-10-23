@@ -19,10 +19,10 @@ export class HomePage {
   };
 
   constructor(public navCtrl: NavController, private contactsService: ContactsService) {
-    contactsService.loadContactsFromLocalStorage();
-    if (contactsService.isEmpty()) {
-      contactsService.loadContactsFromMemory()
-    }
+    // contactsService.loadContactsFromLocalStorage();
+    // if (contactsService.isEmpty()) {
+    //   contactsService.loadContactsFromMemory()
+    // }
     contactsService.sortAlphabetically();
     this.contactsService.logToConsole();
   }

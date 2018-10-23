@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactsService } from '../../services/contacts.service';
 
-// @IonicPage({
-//   name: 'contact',
-//   segment: 'contact'
-// })
 @Component({
   selector: 'page-new-contact',
   templateUrl: 'new-contact.html',

@@ -3,19 +3,31 @@
   <!--  left side menu  -->
   <ion-menu [content]="content">
     <ion-header>
-      <ion-toolbar>
+      <ion-toolbar color="dark">
         <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
-
-    <ion-list id="left-side-menu">
-      <button ion-item (click)="onNewContact()">New Contact</button>
-      <button ion-item (click)="onHelp()">Help</button>
-      <button ion-item menuClose detail-none>Close Menu</button>
+    <ion-list id="left-side-menu" style="color: lightgrey">
+      <button ion-item (click)="onNewContact()">
+        <ion-icon name="contacts"></ion-icon>
+        New Contact
+      </button>
+      <button ion-item (click)="onHelp()">
+        <ion-icon name="help-circle"></ion-icon>
+        Help
+      </button>
+      <div text-center padding>
+        <button ion-button icon-start menuClose detail-none clear>
+          <ion-icon name="close-circle"></ion-icon>
+          Close
+        </button>
+      </div>
     </ion-list>
   </ion-menu>
+  <!--/left-side-menu-->
 
   <!-- main content -->
   <ion-nav [root]="rootPage" main #content></ion-nav>
+  <!--/main-content-->
 
 </ion-split-pane>

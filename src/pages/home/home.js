@@ -47,9 +47,9 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.onNewContact = function () {
         this.navCtrl.push(NewContactPage, { action: Action.CREATE });
     };
-    HomePage.prototype.onRemoveContact = function (email, slidingContact) {
+    HomePage.prototype.onRemoveContact = function (id, slidingContact) {
         if (window.confirm('Confirm Delete Contact')) {
-            this.contactsService.remove(email);
+            this.contactsService.remove(id);
             return;
         }
         else {

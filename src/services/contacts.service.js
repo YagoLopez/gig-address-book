@@ -1,13 +1,9 @@
-// todo: validation forms
-// todo: usar libreria para countries
-// todo: poner boton borrar esquina superior izquierda en vista contacto
-// todo: contacts list añadir clase on hover contact
-// todo: url routes
-// todo: search in list
-// todo: mejorar tests
-// todo: e2e testing
 // todo: complete unit testing
-// todo: use functional programming: spread operator, lodash functional, etc. Avoid mutating functions
+// todo: cambiar nombre new-contact pagina
+// todo: usar libreria para countries
+// todo: contacts list añadir clase on hover contact
+// todo: search in list
+// todo: e2e testing
 // todo: arreglar lo de los imports con require para jest
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -17,7 +13,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-// Jest testing framework needs lodash library be loaded using "require()"
+// Jest testing framework needs lodash library to be loaded using "require()"
 // @ts-ignore
 var sortBy = require('lodash/sortBy');
 // @ts-ignore
@@ -61,10 +57,10 @@ var ContactsService = /** @class */ (function () {
      */
     ContactsService.prototype.loadContactsFromMemory = function () {
         this.contacts = [
-            { id: 1, firstName: 'Cfirstname1', lastName: 'Lastname1', email: 'email1@domain.com', country: 'Country1' },
-            { id: 2, firstName: 'Dfirstname2', lastName: 'Lastname2', email: 'email2@domain.com', country: 'Country2' },
-            { id: 3, firstName: 'Afirstname3', lastName: 'Lastname3', email: 'email3@domain.com', country: 'Country3' },
-            { id: 4, firstName: 'Bfirstname4', lastName: 'Lastname4', email: 'email4@domain.com', country: 'Country4' },
+            { id: 1, firstName: 'Cfirstname1', lastName: 'Lastname1', email: 'email1@domain.com', country: 'Spain' },
+            { id: 2, firstName: 'Dfirstname2', lastName: 'Lastname2', email: 'email2@domain.com', country: 'France' },
+            { id: 3, firstName: 'Afirstname3', lastName: 'Lastname3', email: 'email3@domain.com', country: 'Germany' },
+            { id: 4, firstName: 'Bfirstname4', lastName: 'Lastname4', email: 'email4@domain.com', country: 'USA' }
         ];
     };
     /**
@@ -81,7 +77,6 @@ var ContactsService = /** @class */ (function () {
         this.contacts = sortBy(this.contacts, ['firstName', 'lastName']);
     };
     ContactsService.prototype.add = function (contact) {
-        debugger;
         contact = __assign({}, contact, { id: ContactsService.generateId(), firstName: ContactsService.capitalizeFirstLetter(contact.firstName), lastName: ContactsService.capitalizeFirstLetter(contact.lastName) });
         this.contacts = this.contacts.concat([contact]);
         this.sortAlphabetically();
@@ -106,8 +101,8 @@ var ContactsService = /** @class */ (function () {
         else {
             oldContact.firstName = ContactsService.capitalizeFirstLetter(contact.firstName);
             oldContact.lastName = ContactsService.capitalizeFirstLetter(contact.lastName);
-            oldContact.email = ContactsService.capitalizeFirstLetter(contact.email);
-            oldContact.country = ContactsService.capitalizeFirstLetter(contact.country);
+            oldContact.email = contact.email;
+            oldContact.country = contact.country;
             this.sortAlphabetically();
             this.logToConsole();
             return true;

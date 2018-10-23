@@ -8,6 +8,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ContactsService } from '../services/contacts.service';
 import { NewContactPage } from '../pages/new-contact/new-contact';
+import { HelpPage } from '../pages/help/help';
+import { HelpPageModule } from '../pages/help/help.module';
 
 
 
@@ -20,11 +22,13 @@ import { NewContactPage } from '../pages/new-contact/new-contact';
     BrowserModule,
     IonicModule.forRoot(MyApp, {}, {
       links: [
-        {component: HomePage, name: 'Home', segment: ''},
-        {component: NewContactPage, name: 'Contact', segment: 'contact', defaultHistory: [HomePage]}
+        {component: HomePage, name: 'home', segment: ''},
+        {component: HelpPage, name: 'help', segment: 'help', defaultHistory: [HomePage]},
+        {component: NewContactPage, name: 'contact', segment: 'contact', defaultHistory: [HomePage]}
       ]
     }),
-    NewContactPageModule
+    NewContactPageModule,
+    HelpPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

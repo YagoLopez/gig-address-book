@@ -7,7 +7,7 @@
 // todo: arreglar lo de los imports con require para jest
 
 import { Contact } from '../models/contact';
-// Jest testing framework needs lodash library be loaded using "require()"
+// Jest testing framework needs lodash library to be loaded using "require()"
 // @ts-ignore
 const sortBy = require('lodash/sortBy');
 // @ts-ignore
@@ -43,10 +43,10 @@ export class ContactsService{
    */
   loadContactsFromMemory(): void {
     this.contacts = [
-      {id: 1, firstName: 'Cfirstname1', lastName: 'Lastname1', email: 'email1@domain.com', country: 'Country1'},
-      {id: 2, firstName: 'Dfirstname2', lastName: 'Lastname2', email: 'email2@domain.com', country: 'Country2'},
-      {id: 3, firstName: 'Afirstname3', lastName: 'Lastname3', email: 'email3@domain.com', country: 'Country3'},
-      {id: 4, firstName: 'Bfirstname4', lastName: 'Lastname4', email: 'email4@domain.com', country: 'Country4'}
+      {id: 1, firstName: 'Cfirstname1', lastName: 'Lastname1', email: 'email1@domain.com', country: 'Spain'},
+      {id: 2, firstName: 'Dfirstname2', lastName: 'Lastname2', email: 'email2@domain.com', country: 'France'},
+      {id: 3, firstName: 'Afirstname3', lastName: 'Lastname3', email: 'email3@domain.com', country: 'Germany'},
+      {id: 4, firstName: 'Bfirstname4', lastName: 'Lastname4', email: 'email4@domain.com', country: 'USA'}
     ]
   }
 

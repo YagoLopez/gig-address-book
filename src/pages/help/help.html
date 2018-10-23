@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Help</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid style="height: 100%">
+    <ion-row justify-content-center align-items-center style="height: 50%">
+      <ion-card>
+        <ion-card-header color="primary">
+          Information:
+        </ion-card-header>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="checkmark-circle-outline" item-start></ion-icon>
+            <p class="info-text">Drag from the left side border of the screen to open the menu</p>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="checkmark-circle-outline" item-start></ion-icon>
+            <p class="info-text">Swipe contact to the left to remove it</p>
+          </ion-item>
+
+        </ion-list>
+      </ion-card>
+    </ion-row>
+    <ion-row justify-content-center>
+      <button ion-button icon-start (click)="onCloseBtn()">
+        <ion-icon name="close-circle"></ion-icon>
+        Close
+      </button>
+    </ion-row>
+   </ion-grid>
+</ion-content>
