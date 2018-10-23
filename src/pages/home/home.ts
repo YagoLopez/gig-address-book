@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, Searchbar } from 'ionic-angular';
 import { ContactsService } from '../../services/contacts.service';
 import { Contact } from '../../models/contact';
 import { Action } from '../../models/action';
@@ -12,8 +12,8 @@ import { NewContactPage } from '../new-contact/new-contact';
 export class HomePage {
 
   urlAvatar: string = "assets/imgs/1.png";
-
   _contacts: Contact[];
+  @ViewChild('searchBar') searchBar: Searchbar;
 
   get contacts(): Contact[] {
     return this._contacts;
@@ -45,6 +45,8 @@ export class HomePage {
   onRemoveContact(id: string | number, slidingContact: any) {
     if (window.confirm('Confirm Delete Contact')) {
       this.contactsService.remove(id);
+      this.contacts = this.contactsService.getAll();
+      this.searchBar.value = '';
       return;
     } else {
       slidingContact.close();
