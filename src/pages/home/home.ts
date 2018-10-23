@@ -13,9 +13,15 @@ export class HomePage {
 
   urlAvatar: string = "assets/imgs/1.png";
 
+  _contacts: Contact[];
+
   get contacts(): Contact[] {
-    return this.contactsService.getAll();
+    return this._contacts;
   };
+
+  set contacts(contacts: Contact[]) {
+    this._contacts = contacts;
+  }
 
   constructor(public navCtrl: NavController, private contactsService: ContactsService) {
     // todo: borrar
@@ -24,6 +30,7 @@ export class HomePage {
       contactsService.loadContactsFromMemory()
     }
     contactsService.sortAlphabetically();
+    this.contacts = this.contactsService.getAll();
     this.contactsService.logToConsole();
   }
 
@@ -52,6 +59,26 @@ export class HomePage {
 
   isContactListEmpty(): boolean {
     return this.contactsService.isEmpty();
+  }
+
+  ionViewWillEnter() {
+    this.contacts = this.contactsService.getAll();
+  }
+
+  filterContacts($event: any): void {
+
+    // Reset items back to all of the items
+    this.contacts = this.contactsService.getAll();
+
+    // set val to the value of the searchbar
+    const val = $event.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.contacts = this.contacts.filter((contact) => {
+        return ((contact.firstName + ' ' +contact.lastName).toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
 }
