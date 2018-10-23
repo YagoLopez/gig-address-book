@@ -76,7 +76,7 @@ export class HomePage {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.contacts = this.contacts.filter((contact) => {
-        return (contact.firstName.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return ((contact.firstName + ' ' +contact.lastName).toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }

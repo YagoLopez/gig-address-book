@@ -145,7 +145,7 @@ export class ContactsService{
   }
 
   logToConsole() {
-    console.log('✍ Contact List Log:');
+    console.log('✍ Contact List Log');
     console.table(this.getAll());
   }
 
