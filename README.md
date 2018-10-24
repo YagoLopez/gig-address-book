@@ -8,9 +8,10 @@ By [Yago López Salvador](https://yagolopez.js.org)
 
 - **Progressive Web Application** (offline capabilities enabled by a service worker). Service worker writes files to the *browser cache storage*. 
   - It can be showed at: Menu → More Tools → Developer Tools → Application Tab → Cache → Cache Storage
-  - The first time the app is loaded, the files are written to cache. Add an app icon to desktop/home screen from: Menu → More Tools → Developer Tools → Create Shorcut. (If the app is run locally reload the page to be sure all files are written to cache)
+  - The first time the app is loaded, the files are written to cache. 
+  - Add an app icon to desktop/home screen from: Menu → More Tools → Developer Tools → Create Shorcut. (If the app is run locally, reload the page to be sure all files are written to cache)
   - Disconnect from network
-  - The second time the app loads files from local cache storage
+  - Next time the app loads the files from local cache storage
 - FrontEnd Framework: **Ionic v3** (Based in Angular+)
 - Responsive Layout
 - Material Design
