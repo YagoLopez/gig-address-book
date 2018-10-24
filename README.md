@@ -25,7 +25,7 @@ By [Yago López Salvador](https://yagolopez.js.org)
 
 - [Link](https://yagolopez.js.org/gig-address-book/www/)
 - QR Code:
-![](C:\Users\yagol\Documents\projects\gig-address-book\qrcode.png)
+![](qrcode.png)
 
 
 ## Requirements
