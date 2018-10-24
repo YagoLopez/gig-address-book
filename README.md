@@ -24,8 +24,10 @@ By [Yago López Salvador](https://yagolopez.js.org)
 ## Demo
 
 - [Link](https://yagolopez.js.org/gig-address-book/www/)
+
 - QR Code:
-![](qrcode.png)
+
+  ![](qrcode.png)
 
 
 ## Requirements
