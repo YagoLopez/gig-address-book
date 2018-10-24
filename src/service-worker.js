@@ -18,6 +18,7 @@ self.toolbox.precache(
     './build/vendor.js',
     './build/main.css',
     './build/polyfills.js',
+    './assets/imgs/contacts-ios-grey.svg',
     'index.html',
     'manifest.json'
   ]
