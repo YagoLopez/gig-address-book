@@ -24,10 +24,10 @@ export class HomePage {
   }
 
   constructor(public navCtrl: NavController, private contactsService: ContactsService) {
-    // todo: borrar
     contactsService.loadContactsFromLocalStorage();
     if (contactsService.isEmptyContactList()) {
       contactsService.loadContactsFromMemory();
+      console.log('✅ Address Book is empty. Creating dummy data');
     }
     contactsService.sortAlphabetically();
     this.contacts = this.contactsService.getAll();
