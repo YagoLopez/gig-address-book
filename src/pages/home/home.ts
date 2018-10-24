@@ -28,7 +28,6 @@ export class HomePage {
     contactsService.loadContactsFromLocalStorage();
     if (contactsService.isEmptyContactList()) {
       contactsService.loadContactsFromMemory();
-      window.alert('Address Book is empty. Loading dummy data');
     }
     contactsService.sortAlphabetically();
     this.contacts = this.contactsService.getAll();

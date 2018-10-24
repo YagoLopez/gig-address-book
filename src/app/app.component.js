@@ -8,25 +8,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component, ViewChild } from '@angular/core';
-// import { Platform } from 'ionic-angular';
-// import { StatusBar } from '@ionic-native/status-bar';
+import { Platform } from 'ionic-angular';
 import { ContactsService } from '../services/contacts.service';
 import { HomePage } from '../pages/home/home';
 import { MenuController, NavController } from 'ionic-angular';
 import { NewContactPage } from '../pages/new-contact/new-contact';
 import { Action } from '../models/action';
+import { HelpPage } from '../pages/help/help';
 var MyApp = /** @class */ (function () {
-    function MyApp(contactsService, menuCtrl
-        /* platform: Platform , statusBar: StatusBar */ ) {
-        /*
-            platform.ready().then(() => {
-              // Okay, so the platform is ready and our plugins are available.
-              // Here you can do any higher level native things you might need.
-              // statusBar.styleDefault();
-            });
-        */
+    // tslint:disable-next-line
+    function MyApp(contactsService, menuCtrl, platform) {
         this.contactsService = contactsService;
         this.menuCtrl = menuCtrl;
+        this.platform = platform;
         this.rootPage = HomePage;
         /**
          * Just before unload the app, save the in-memory contact list to Local Storage
@@ -34,14 +28,18 @@ var MyApp = /** @class */ (function () {
         window.addEventListener('beforeunload', function () {
             contactsService.saveAll();
         });
+        this.devWidth = this.platform.width();
     }
     MyApp.prototype.onNewContact = function () {
         this.navCtrl.push(NewContactPage, { action: Action.CREATE });
         this.menuCtrl.close();
     };
     MyApp.prototype.onHelp = function () {
+        this.navCtrl.push(HelpPage);
+        this.menuCtrl.close();
     };
-    MyApp.prototype.closeMenu = function () {
+    MyApp.prototype.ngDoCheck = function () {
+        this.devWidth = this.platform.width();
     };
     __decorate([
         ViewChild('content'),
@@ -51,8 +49,9 @@ var MyApp = /** @class */ (function () {
         Component({
             templateUrl: 'app.html'
         }),
-        __metadata("design:paramtypes", [ContactsService, MenuController
-            /* platform: Platform , statusBar: StatusBar */ ])
+        __metadata("design:paramtypes", [ContactsService,
+            MenuController,
+            Platform])
     ], MyApp);
     return MyApp;
 }());

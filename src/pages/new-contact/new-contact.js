@@ -11,18 +11,15 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactsService } from '../../services/contacts.service';
-// @IonicPage({
-//   name: 'contact',
-//   segment: 'contact'
-// })
+import Countries from 'country-list';
 var NewContactPage = /** @class */ (function () {
     function NewContactPage(navCtrl, navParams, contactsService) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.contactsService = contactsService;
         this.MIN_LENGTH = 4;
-        this.countries = ['Spain', 'France', 'Germany', 'Italy', 'USA'];
-        this.idControl = new FormControl({disabled: true});
+        this.countries = Countries().getData();
+        this.idControl = new FormControl({ disabled: true });
         this.firstNameControl = new FormControl('', [
             Validators.required,
             Validators.minLength(this.MIN_LENGTH)

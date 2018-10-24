@@ -1,10 +1,7 @@
-// todo: complete unit testing
 // todo: cambiar nombre new-contact pagina
-// todo: usar libreria para countries
-// todo: contacts list añadir clase on hover contact
-// todo: search in list
-// todo: e2e testing
-// todo: arreglar lo de los imports con require para jest
+// todo: repasar README.md
+// todo: contact component
+// todo: activar service worker para pwa
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -13,7 +10,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-// Jest testing framework needs lodash library to be loaded using "require()"
+// Jest testing framework needs to use "require()" to load "lodash" library instead of es6 imports
 // @ts-ignore
 var sortBy = require('lodash/sortBy');
 // @ts-ignore
@@ -22,10 +19,6 @@ var remove = require('lodash/remove');
 var findIndex = require('lodash/findIndex');
 // @ts-ignore
 var isEqual = require('lodash/isEqual');
-// import sortBy from 'lodash/sortBy';
-// import remove from 'lodash/remove';
-// import findIndex from 'lodash/findIndex';
-// import isEqual from 'lodash/isEqual';
 /**
  * Contacts Service implements the Repository Pattern for Contact model domain (aka entity)
  */
@@ -57,18 +50,20 @@ var ContactsService = /** @class */ (function () {
      */
     ContactsService.prototype.loadContactsFromMemory = function () {
         this.contacts = [
-            { id: 1, firstName: 'Cfirstname1', lastName: 'Lastname1', email: 'email1@domain.com', country: 'Spain' },
-            { id: 2, firstName: 'Dfirstname2', lastName: 'Lastname2', email: 'email2@domain.com', country: 'France' },
-            { id: 3, firstName: 'Afirstname3', lastName: 'Lastname3', email: 'email3@domain.com', country: 'Germany' },
-            { id: 4, firstName: 'Bfirstname4', lastName: 'Lastname4', email: 'email4@domain.com', country: 'USA' }
+            { id: 1, firstName: 'Cfirstname1', lastName: 'Lastname1', email: 'email1@domain.com', country: 'ES' },
+            { id: 2, firstName: 'Dfirstname2', lastName: 'Lastname2', email: 'email2@domain.com', country: 'FR' },
+            { id: 3, firstName: 'Afirstname3', lastName: 'Lastname3', email: 'email3@domain.com', country: 'GB' },
+            { id: 4, firstName: 'Bfirstname4', lastName: 'Lastname4', email: 'email4@domain.com', country: 'US' }
         ];
     };
     /**
      * Loads the contact list from Local Storage
      */
     ContactsService.prototype.loadContactsFromLocalStorage = function () {
-        this.contacts = JSON.parse(localStorage.getItem('contacts'));
-        this.sortAlphabetically();
+        var contactsData = localStorage.getItem('contacts');
+        if (contactsData !== undefined) {
+            this.contacts = JSON.parse(localStorage.getItem('contacts'));
+        }
     };
     ContactsService.prototype.getAll = function () {
         return this.contacts;
@@ -108,15 +103,17 @@ var ContactsService = /** @class */ (function () {
             return true;
         }
     };
+    /**
+     * Save all contacts to localStorage
+     */
     ContactsService.prototype.saveAll = function () {
-        localStorage.setItem('contacts', JSON.stringify(this.contacts));
-        try {
+        if (this.contacts !== undefined) {
             localStorage.setItem('contacts', JSON.stringify(this.contacts));
         }
-        catch (error) {
-            throw error;
-        }
     };
+    /**
+     * Remove all contacts from localStorage
+     */
     ContactsService.prototype.removeAll = function () {
         try {
             this.contacts.length = 0;
@@ -127,14 +124,14 @@ var ContactsService = /** @class */ (function () {
         }
         this.logToConsole();
     };
-    ContactsService.prototype.isEmpty = function () {
-        return this.contacts.length == 0;
+    ContactsService.prototype.isEmptyContactList = function () {
+        return this.contacts && this.contacts.length == 0;
     };
     ContactsService.capitalizeFirstLetter = function (text) {
         return text.charAt(0).toUpperCase() + text.toLocaleLowerCase().slice(1);
     };
     ContactsService.prototype.logToConsole = function () {
-        console.log('✍ Contact List Log:');
+        console.log('✍ Contact List Log');
         console.table(this.getAll());
     };
     ContactsService.generateId = function () {

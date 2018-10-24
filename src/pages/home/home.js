@@ -15,8 +15,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, Searchbar } from 'ionic-angular';
 import { ContactsService } from '../../services/contacts.service';
 import { Action } from '../../models/action';
 import { NewContactPage } from '../new-contact/new-contact';
@@ -24,18 +24,23 @@ var HomePage = /** @class */ (function () {
     function HomePage(navCtrl, contactsService) {
         this.navCtrl = navCtrl;
         this.contactsService = contactsService;
-        // urlAvatar: string = "https://loremflickr.com/100/100/face?random=1";
         this.urlAvatar = "assets/imgs/1.png";
+        // todo: borrar
         contactsService.loadContactsFromLocalStorage();
-        if (contactsService.isEmpty()) {
+        if (contactsService.isEmptyContactList()) {
             contactsService.loadContactsFromMemory();
+            window.alert('Address Book is empty. Loading dummy data');
         }
         contactsService.sortAlphabetically();
+        this.contacts = this.contactsService.getAll();
         this.contactsService.logToConsole();
     }
     Object.defineProperty(HomePage.prototype, "contacts", {
         get: function () {
-            return this.contactsService.getAll();
+            return this._contacts;
+        },
+        set: function (contacts) {
+            this._contacts = contacts;
         },
         enumerable: true,
         configurable: true
@@ -50,6 +55,8 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.onRemoveContact = function (id, slidingContact) {
         if (window.confirm('Confirm Delete Contact')) {
             this.contactsService.remove(id);
+            this.contacts = this.contactsService.getAll();
+            this.searchBar.value = '';
             return;
         }
         else {
@@ -62,8 +69,28 @@ var HomePage = /** @class */ (function () {
         }
     };
     HomePage.prototype.isContactListEmpty = function () {
-        return this.contactsService.isEmpty();
+        return this.contactsService.isEmptyContactList();
     };
+    HomePage.prototype.ionViewWillEnter = function () {
+        this.contacts = this.contactsService.getAll();
+        this.searchBar.value = '';
+    };
+    HomePage.prototype.filterContacts = function ($event) {
+        // Reset items back to all of the items
+        this.contacts = this.contactsService.getAll();
+        // set val to the value of the searchbar
+        var val = $event.target.value;
+        // if the value is an empty string don't filter the items
+        if (val && val.trim() != '') {
+            this.contacts = this.contacts.filter(function (contact) {
+                return ((contact.firstName + ' ' + contact.lastName).toLowerCase().indexOf(val.toLowerCase()) > -1);
+            });
+        }
+    };
+    __decorate([
+        ViewChild('searchBar'),
+        __metadata("design:type", Searchbar)
+    ], HomePage.prototype, "searchBar", void 0);
     HomePage = __decorate([
         Component({
             selector: 'page-home',

@@ -8,28 +8,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-/**
- * Generated class for the HelpPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { MenuController, NavController } from 'ionic-angular';
 var HelpPage = /** @class */ (function () {
-    function HelpPage(navCtrl, navParams) {
+    function HelpPage(navCtrl, menuCtrl) {
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
+        this.menuCtrl = menuCtrl;
     }
-    HelpPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad HelpPage');
+    HelpPage.prototype.onCloseBtn = function () {
+        this.navCtrl.pop();
+        this.menuCtrl.close();
     };
     HelpPage = __decorate([
-        IonicPage(),
         Component({
             selector: 'page-help',
             templateUrl: 'help.html',
         }),
-        __metadata("design:paramtypes", [NavController, NavParams])
+        __metadata("design:paramtypes", [NavController, MenuController])
     ], HelpPage);
     return HelpPage;
 }());
