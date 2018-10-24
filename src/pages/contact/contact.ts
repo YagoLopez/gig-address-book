@@ -27,13 +27,10 @@ export class ContactPage {
   ]);
 
   emailControl = new FormControl('', [
-    Validators.required,
-    Validators.email
-  ]);
-
-  countryControl = new FormControl('', [
     Validators.required
   ]);
+
+  countryControl = new FormControl('');
 
   contactForm = new FormGroup({
     id: this.idControl,
@@ -91,9 +88,9 @@ export class ContactPage {
   }
 
   ionViewWillEnter() {
-    this.firstNameControl.setErrors(null);
-    this.lastNameControl.setErrors(null);
-    this.emailControl.setErrors(null);
+    this.firstNameControl.setErrors({});
+    this.lastNameControl.setErrors({});
+    this.emailControl.setErrors({});
   }
 
 }

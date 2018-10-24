@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1540397542471" clover="3.2.0">
-  <project timestamp="1540397542471" name="All files">
+<coverage generated="1540411068601" clover="3.2.0">
+  <project timestamp="1540411068601" name="All files">
     <metrics statements="68" coveredstatements="51" conditionals="10" coveredconditionals="4" methods="16" coveredmethods="13" elements="94" coveredelements="68" complexity="0" loc="68" ncloc="68" packages="1" files="1" classes="1">
       <file name="contacts.service.ts" path="C:\Users\yagol\Documents\projects\gig-address-book\src\services\contacts.service.ts">
         <metrics statements="68" coveredstatements="51" conditionals="10" coveredconditionals="4" methods="16" coveredmethods="13"/>
