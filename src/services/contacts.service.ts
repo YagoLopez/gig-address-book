@@ -1,7 +1,8 @@
+// todo: usar libreria para countries
+// todo: contact component
 // todo: repasar README.md
 // todo: cambiar nombre new-contact pagina
-// todo: usar libreria para countries
-// todo: e2e testing
+// todo: activar service worker para pwa
 
 import { Contact } from '../models/contact';
 // Jest testing framework needs to use "require()" to load "lodash" library instead of es6 imports
@@ -35,10 +36,10 @@ export class ContactsService{
    */
   loadContactsFromMemory(): void {
     this.contacts = [
-      {id: 1, firstName: 'Cfirstname1', lastName: 'Lastname1', email: 'email1@domain.com', country: 'Spain'},
-      {id: 2, firstName: 'Dfirstname2', lastName: 'Lastname2', email: 'email2@domain.com', country: 'France'},
-      {id: 3, firstName: 'Afirstname3', lastName: 'Lastname3', email: 'email3@domain.com', country: 'Germany'},
-      {id: 4, firstName: 'Bfirstname4', lastName: 'Lastname4', email: 'email4@domain.com', country: 'USA'}
+      {id: 1, firstName: 'Cfirstname1', lastName: 'Lastname1', email: 'email1@domain.com', country: 'ES'},
+      {id: 2, firstName: 'Dfirstname2', lastName: 'Lastname2', email: 'email2@domain.com', country: 'FR'},
+      {id: 3, firstName: 'Afirstname3', lastName: 'Lastname3', email: 'email3@domain.com', country: 'GB'},
+      {id: 4, firstName: 'Bfirstname4', lastName: 'Lastname4', email: 'email4@domain.com', country: 'US'}
     ]
   }
 

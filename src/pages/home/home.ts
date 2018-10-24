@@ -65,6 +65,7 @@ export class HomePage {
 
   ionViewWillEnter() {
     this.contacts = this.contactsService.getAll();
+    this.searchBar.value = '';
   }
 
   filterContacts($event: any): void {

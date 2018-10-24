@@ -62,7 +62,7 @@
         <ion-label>Country</ion-label>
         <ion-select formControlName="country">
           <ion-option *ngFor="let country of countries"
-                      [value]="country">{{ country }}</ion-option>
+                      [value]="country.code">{{ country.name }}</ion-option>
         </ion-select>
       </ion-item>
       <!--/select country control-->
