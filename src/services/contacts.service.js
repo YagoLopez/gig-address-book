@@ -1,7 +1,3 @@
-// todo: cambiar nombre contact pagina
-// todo: repasar README.md
-// todo: contact component
-// todo: activar service worker para pwa
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -35,7 +31,7 @@ var ContactsService = /** @class */ (function () {
                 localStorage.removeItem(test);
                 return true;
             }
-            catch (e) {
+            catch (error) {
                 return false;
             }
         };

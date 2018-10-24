@@ -25,10 +25,10 @@ var HomePage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.contactsService = contactsService;
         this.urlAvatar = "assets/imgs/1.png";
-        // todo: borrar
         contactsService.loadContactsFromLocalStorage();
         if (contactsService.isEmptyContactList()) {
             contactsService.loadContactsFromMemory();
+            console.log('✅ Address Book is empty. Creating dummy data');
         }
         contactsService.sortAlphabetically();
         this.contacts = this.contactsService.getAll();
