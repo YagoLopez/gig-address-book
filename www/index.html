@@ -16,10 +16,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <!--todo: quitar comentarios-->
-  <!--todo: borrar directorio temp-->
-
-  <!-- uncomment this code to enable service worker
+  <!--service worker-->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
@@ -27,7 +24,7 @@
         .catch(err => console.error('Error', err));
     }
   </script>
-  -->
+  <!--/service worker-->
 
   <link href="build/main.css" rel="stylesheet">
 

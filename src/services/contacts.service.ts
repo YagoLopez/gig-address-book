@@ -1,6 +1,3 @@
-// todo: activar service worker para pwa
-// todo: contact component
-
 import { Contact } from '../models/contact';
 // Jest testing framework needs to use "require()" to load "lodash" library instead of es6 imports
 // @ts-ignore
