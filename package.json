@@ -13,8 +13,8 @@
     "test": "jest --notify",
     "test:watch": "jest --watch --notify",
     "coverage:run": "npm run test -- --coverage --no-cache",
-    "coverage:show": "lite-server --baseDir=\"coverage/lcov-report/",
-    "show:app": "lite-server --baseDir=\"www"
+    "coverage:show": "lite-server --baseDir=\"coverage/lcov-report/\"",
+    "show:app": "lite-server --baseDir=\"www\""
   },
   "jest": {
     "transform": {

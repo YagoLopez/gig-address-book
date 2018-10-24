@@ -1,4 +1,3 @@
-// todo: repasar README.md
 // todo: activar service worker para pwa
 // todo: contact component
 
@@ -61,7 +60,7 @@ export class ContactsService{
       localStorage.setItem(test, 'test');
       localStorage.removeItem(test);
       return true;
-    } catch (e) {
+    } catch (error) {
       return false;
     }
   };
