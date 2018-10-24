@@ -19,7 +19,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, Searchbar } from 'ionic-angular';
 import { ContactsService } from '../../services/contacts.service';
 import { Action } from '../../models/action';
-import { NewContactPage } from '../new-contact/new-contact';
+import { ContactPage } from '../contact/contact';
 var HomePage = /** @class */ (function () {
     function HomePage(navCtrl, contactsService) {
         this.navCtrl = navCtrl;
@@ -29,7 +29,6 @@ var HomePage = /** @class */ (function () {
         contactsService.loadContactsFromLocalStorage();
         if (contactsService.isEmptyContactList()) {
             contactsService.loadContactsFromMemory();
-            window.alert('Address Book is empty. Loading dummy data');
         }
         contactsService.sortAlphabetically();
         this.contacts = this.contactsService.getAll();
@@ -47,10 +46,10 @@ var HomePage = /** @class */ (function () {
     });
     ;
     HomePage.prototype.onViewContact = function (contact) {
-        this.navCtrl.push(NewContactPage, __assign({}, contact, { action: Action.UPDATE }));
+        this.navCtrl.push(ContactPage, __assign({}, contact, { action: Action.UPDATE }));
     };
     HomePage.prototype.onNewContact = function () {
-        this.navCtrl.push(NewContactPage, { action: Action.CREATE });
+        this.navCtrl.push(ContactPage, { action: Action.CREATE });
     };
     HomePage.prototype.onRemoveContact = function (id, slidingContact) {
         if (window.confirm('Confirm Delete Contact')) {

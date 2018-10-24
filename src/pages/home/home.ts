@@ -3,7 +3,7 @@ import { NavController, Searchbar } from 'ionic-angular';
 import { ContactsService } from '../../services/contacts.service';
 import { Contact } from '../../models/contact';
 import { Action } from '../../models/action';
-import { NewContactPage } from '../new-contact/new-contact';
+import { ContactPage } from '../contact/contact';
 
 @Component({
   selector: 'page-home',
@@ -35,11 +35,11 @@ export class HomePage {
   }
 
   onViewContact(contact: Contact) {
-    this.navCtrl.push(NewContactPage, {...contact, action: Action.UPDATE});
+    this.navCtrl.push(ContactPage, {...contact, action: Action.UPDATE});
   }
 
   onNewContact() {
-    this.navCtrl.push(NewContactPage, {action: Action.CREATE});
+    this.navCtrl.push(ContactPage, {action: Action.CREATE});
   }
 
   onRemoveContact(id: string | number, slidingContact: any) {

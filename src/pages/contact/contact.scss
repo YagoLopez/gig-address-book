@@ -1,0 +1,25 @@
+.fondo-naranja {
+  background-color: orange;
+}
+.fondo-naranja:hover {
+  background-color: orange !important;
+}
+
+#select-country > div.item-inner {
+  border-bottom-style: solid;
+  border-bottom-color: lightgrey;
+  border-bottom-width: 1px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.error {
+  border-color: red;
+  border-style: dashed;
+  border-width: 1px;
+  margin-left: 15px;
+  color: red;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: cornsilk;
+}

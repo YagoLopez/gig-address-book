@@ -83,7 +83,7 @@ webpackEmptyAsyncContext.id = 177;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_contacts_service__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_action__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__new_contact_new_contact__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__contact_contact__ = __webpack_require__(59);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -132,10 +132,10 @@ var HomePage = /** @class */ (function () {
     });
     ;
     HomePage.prototype.onViewContact = function (contact) {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__new_contact_new_contact__["a" /* NewContactPage */], __assign({}, contact, { action: __WEBPACK_IMPORTED_MODULE_3__models_action__["a" /* Action */].UPDATE }));
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__contact_contact__["a" /* ContactPage */], __assign({}, contact, { action: __WEBPACK_IMPORTED_MODULE_3__models_action__["a" /* Action */].UPDATE }));
     };
     HomePage.prototype.onNewContact = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__new_contact_new_contact__["a" /* NewContactPage */], { action: __WEBPACK_IMPORTED_MODULE_3__models_action__["a" /* Action */].CREATE });
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__contact_contact__["a" /* ContactPage */], { action: __WEBPACK_IMPORTED_MODULE_3__models_action__["a" /* Action */].CREATE });
     };
     HomePage.prototype.onRemoveContact = function (id, slidingContact) {
         if (window.confirm('Confirm Delete Contact')) {
@@ -174,16 +174,15 @@ var HomePage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('searchBar'),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Searchbar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Searchbar */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Searchbar */])
     ], HomePage.prototype, "searchBar", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <button ion-button icon-only menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Address Book</ion-title>\n\n    <ion-buttons end *ngIf="!isContactListEmpty()">\n\n      <button ion-button icon-only (click)="onRemoveAll()" title="Remove All Contacts">\n\n        <ion-icon name="trash"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n\n\n<ion-content class="fade-in-long">\n\n\n\n  <ion-searchbar (ionInput)="filterContacts($event)" padding #searchBar></ion-searchbar>\n\n\n\n  <ion-list inset *ngIf="contacts.length > 0">\n\n    <ion-item-sliding *ngFor="let contact of contacts" #slidingContact>\n\n      <button ion-item (click)="onViewContact(contact)" title="View Contact" class="item-hover">\n\n        <ion-avatar item-start>\n\n          <img [src]="urlAvatar" alt="">\n\n        </ion-avatar>\n\n        <h2>{{ contact.firstName }} {{ contact.lastName }}</h2>\n\n        <p>{{ contact.email }}</p>\n\n        <button ion-button clear item-end>\n\n          <ion-icon name="play"></ion-icon>\n\n        </button>\n\n      </button>\n\n      <ion-item-options side="right">\n\n        <button ion-button color="danger" (click)="onRemoveContact(contact.id, slidingContact)">\n\n          <ion-icon name="trash"></ion-icon>\n\n          Delete\n\n        </button>\n\n      </ion-item-options>\n\n    </ion-item-sliding>\n\n  </ion-list>\n\n\n\n  <div *ngIf="contacts.length < 1" class="centered-in-page">\n\n    <img src="assets/imgs/contacts-ios-grey.svg" class="logo-emtpy-list"/>\n\n    <div class="text-empty-list">Address Book is empty</div>\n\n  </div>\n\n\n\n  <ion-fab right bottom class="fab-position">\n\n    <button ion-fab color="primary" (click)="onNewContact()" title="New Contact">\n\n      <ion-icon name="add"></ion-icon>\n\n    </button>\n\n  </ion-fab>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_contacts_service__["a" /* ContactsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_contacts_service__["a" /* ContactsService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_contacts_service__["a" /* ContactsService */]])
     ], HomePage);
     return HomePage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -228,11 +227,11 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_new_contact_new_contact_module__ = __webpack_require__(299);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_contact_contact_module__ = __webpack_require__(299);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_contacts_service__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_new_contact_new_contact__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_contact_contact__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_help_help__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_help_help_module__ = __webpack_require__(412);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -266,10 +265,10 @@ var AppModule = /** @class */ (function () {
                     links: [
                         { component: __WEBPACK_IMPORTED_MODULE_5__pages_home_home__["a" /* HomePage */], name: 'home', segment: '' },
                         { component: __WEBPACK_IMPORTED_MODULE_8__pages_help_help__["a" /* HelpPage */], name: 'help', segment: 'help', defaultHistory: [__WEBPACK_IMPORTED_MODULE_5__pages_home_home__["a" /* HomePage */]] },
-                        { component: __WEBPACK_IMPORTED_MODULE_7__pages_new_contact_new_contact__["a" /* NewContactPage */], name: 'contact', segment: 'contact', defaultHistory: [__WEBPACK_IMPORTED_MODULE_5__pages_home_home__["a" /* HomePage */]] }
+                        { component: __WEBPACK_IMPORTED_MODULE_7__pages_contact_contact__["a" /* ContactPage */], name: 'contact', segment: 'contact', defaultHistory: [__WEBPACK_IMPORTED_MODULE_5__pages_home_home__["a" /* HomePage */]] }
                     ]
                 }),
-                __WEBPACK_IMPORTED_MODULE_3__pages_new_contact_new_contact_module__["a" /* NewContactPageModule */],
+                __WEBPACK_IMPORTED_MODULE_3__pages_contact_contact_module__["a" /* NewContactPageModule */],
                 __WEBPACK_IMPORTED_MODULE_9__pages_help_help_module__["a" /* HelpPageModule */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* IonicApp */]],
@@ -298,7 +297,7 @@ var AppModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__new_contact__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__contact__ = __webpack_require__(59);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -315,10 +314,10 @@ var NewContactPageModule = /** @class */ (function () {
     NewContactPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__new_contact__["a" /* NewContactPage */],
+                __WEBPACK_IMPORTED_MODULE_3__contact__["a" /* ContactPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__new_contact__["a" /* NewContactPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__contact__["a" /* ContactPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* ReactiveFormsModule */]
             ],
         })
@@ -326,7 +325,7 @@ var NewContactPageModule = /** @class */ (function () {
     return NewContactPageModule;
 }());
 
-//# sourceMappingURL=new-contact.module.js.map
+//# sourceMappingURL=contact.module.js.map
 
 /***/ }),
 
@@ -339,7 +338,7 @@ var NewContactPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_contacts_service__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_home_home__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_new_contact_new_contact__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_contact_contact__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_action__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_help_help__ = __webpack_require__(126);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -375,7 +374,7 @@ var MyApp = /** @class */ (function () {
         this.devWidth = this.platform.width();
     }
     MyApp.prototype.onNewContact = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__pages_new_contact_new_contact__["a" /* NewContactPage */], { action: __WEBPACK_IMPORTED_MODULE_5__models_action__["a" /* Action */].CREATE });
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__pages_contact_contact__["a" /* ContactPage */], { action: __WEBPACK_IMPORTED_MODULE_5__models_action__["a" /* Action */].CREATE });
         this.menuCtrl.close();
     };
     MyApp.prototype.onHelp = function () {
@@ -444,7 +443,7 @@ var HelpPageModule = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewContactPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(11);
@@ -465,8 +464,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var NewContactPage = /** @class */ (function () {
-    function NewContactPage(navCtrl, navParams, contactsService) {
+var ContactPage = /** @class */ (function () {
+    function ContactPage(navCtrl, navParams, contactsService) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.contactsService = contactsService;
@@ -506,7 +505,7 @@ var NewContactPage = /** @class */ (function () {
             this.countryControl.setValue(contactData.country);
         }
     }
-    NewContactPage.prototype.onSaveContact = function () {
+    ContactPage.prototype.onSaveContact = function () {
         if (this.contactForm.valid) {
             if (this.action === 'CREATE') {
                 this.contactsService.add(this.contactForm.value);
@@ -522,35 +521,35 @@ var NewContactPage = /** @class */ (function () {
             console.log('Invalid Form');
         }
     };
-    NewContactPage.prototype.onRemoveContact = function () {
+    ContactPage.prototype.onRemoveContact = function () {
         if (window.confirm('Confirm Delete Contact')) {
             this.contactsService.remove(this.contactForm.value.id);
             this.goToPreviousPage();
         }
     };
-    NewContactPage.prototype.onCancelBtn = function () {
+    ContactPage.prototype.onCancelBtn = function () {
         this.goToPreviousPage();
     };
-    NewContactPage.prototype.goToPreviousPage = function () {
+    ContactPage.prototype.goToPreviousPage = function () {
         this.navCtrl.pop();
     };
-    NewContactPage.prototype.ionViewWillEnter = function () {
+    ContactPage.prototype.ionViewWillEnter = function () {
         this.firstNameControl.setErrors(null);
         this.lastNameControl.setErrors(null);
         this.emailControl.setErrors(null);
     };
-    NewContactPage = __decorate([
+    ContactPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-new-contact',template:/*ion-inline-start:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\new-contact\new-contact.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-title *ngIf="action === \'CREATE\'">New Contact</ion-title>\n\n    <ion-title *ngIf="action === \'UPDATE\'">Contact</ion-title>\n\n    <ion-buttons end *ngIf="action === \'UPDATE\'">\n\n      <button ion-button icon-only (click)="onRemoveContact()" title="Remove Contact">\n\n        <ion-icon name="trash"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n  <form [formGroup]="contactForm">\n\n\n\n    <ion-list>\n\n      <!--id control-->\n\n      <ion-item *ngIf="action === \'UPDATE\'">\n\n        <ion-label>Id:</ion-label>\n\n        <ion-input type="text" formControlName="id" disabled></ion-input>\n\n      </ion-item>\n\n\n\n      <!--firstName control-->\n\n      <ion-item>\n\n        <ion-label floating>First Name</ion-label>\n\n        <ion-input type="text" formControlName="firstName" clearInput></ion-input>\n\n      </ion-item>\n\n      <p *ngIf="firstNameControl.hasError(\'required\')" class="error">\n\n        ⛔ Required field\n\n      </p>\n\n      <p *ngIf="firstNameControl.hasError(\'minlength\')" class="error">\n\n        ⛔ Minimum length is {{ MIN_LENGTH }}\n\n      </p>\n\n\n\n      <!--lastName control-->\n\n      <ion-item>\n\n        <ion-label floating>Last Name</ion-label>\n\n        <ion-input type="text" formControlName="lastName" clearInput></ion-input>\n\n      </ion-item>\n\n      <p *ngIf="lastNameControl.hasError(\'required\')" class="error">\n\n        ⛔ Required field\n\n      </p>\n\n      <p *ngIf="lastNameControl.hasError(\'minlength\')" class="error">\n\n        ⛔ Minimum length is {{ MIN_LENGTH }}\n\n      </p>\n\n\n\n      <!--email control-->\n\n      <ion-item>\n\n        <ion-label floating>Email</ion-label>\n\n        <ion-input type="email" formControlName="email" clearInput></ion-input>\n\n      </ion-item>\n\n      <p *ngIf="emailControl.hasError(\'required\')" class="error">\n\n        ⛔ Required field\n\n      </p>\n\n      <p *ngIf="emailControl.hasError(\'email\')" class="error">\n\n        ⛔ Invalid Email\n\n      </p>\n\n\n\n      <!--select country control-->\n\n      <ion-item id="select-country">\n\n        <ion-label>Country</ion-label>\n\n        <ion-select formControlName="country">\n\n          <ion-option *ngFor="let country of countries"\n\n                      [value]="country.code">{{ country.name }}</ion-option>\n\n        </ion-select>\n\n      </ion-item>\n\n      <!--/select country control-->\n\n\n\n    </ion-list>\n\n\n\n    <!--buttons-->\n\n    <div text-center padding>\n\n      <button ion-button icon-start (click)="onSaveContact()" [disabled]="!contactForm.valid">\n\n        <ion-icon name="checkmark-circle"></ion-icon>\n\n        Submit\n\n      </button>\n\n      <button ion-button icon-start\n\n              (click)="onCancelBtn()" class="fondo-naranja">\n\n        <ion-icon name="close-circle"></ion-icon>\n\n        Cancel\n\n      </button>\n\n    </div>\n\n    <!--/buttons-->\n\n\n\n  </form>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\new-contact\new-contact.html"*/,
+            selector: 'page-new-contact',template:/*ion-inline-start:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-title *ngIf="action === \'CREATE\'">New Contact</ion-title>\n\n    <ion-title *ngIf="action === \'UPDATE\'">Contact</ion-title>\n\n    <ion-buttons end *ngIf="action === \'UPDATE\'">\n\n      <button ion-button icon-only (click)="onRemoveContact()" title="Remove Contact">\n\n        <ion-icon name="trash"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n  <form [formGroup]="contactForm">\n\n\n\n    <ion-list>\n\n      <!--id control-->\n\n      <ion-item *ngIf="action === \'UPDATE\'">\n\n        <ion-label>Id:</ion-label>\n\n        <ion-input type="text" formControlName="id" disabled></ion-input>\n\n      </ion-item>\n\n\n\n      <!--firstName control-->\n\n      <ion-item>\n\n        <ion-label floating>First Name</ion-label>\n\n        <ion-input type="text" formControlName="firstName" clearInput></ion-input>\n\n      </ion-item>\n\n      <p *ngIf="firstNameControl.hasError(\'required\')" class="error">\n\n        ⛔ Required field\n\n      </p>\n\n      <p *ngIf="firstNameControl.hasError(\'minlength\')" class="error">\n\n        ⛔ Minimum length is {{ MIN_LENGTH }}\n\n      </p>\n\n\n\n      <!--lastName control-->\n\n      <ion-item>\n\n        <ion-label floating>Last Name</ion-label>\n\n        <ion-input type="text" formControlName="lastName" clearInput></ion-input>\n\n      </ion-item>\n\n      <p *ngIf="lastNameControl.hasError(\'required\')" class="error">\n\n        ⛔ Required field\n\n      </p>\n\n      <p *ngIf="lastNameControl.hasError(\'minlength\')" class="error">\n\n        ⛔ Minimum length is {{ MIN_LENGTH }}\n\n      </p>\n\n\n\n      <!--email control-->\n\n      <ion-item>\n\n        <ion-label floating>Email</ion-label>\n\n        <ion-input type="email" formControlName="email" clearInput></ion-input>\n\n      </ion-item>\n\n      <p *ngIf="emailControl.hasError(\'required\')" class="error">\n\n        ⛔ Required field\n\n      </p>\n\n      <p *ngIf="emailControl.hasError(\'email\')" class="error">\n\n        ⛔ Invalid Email\n\n      </p>\n\n\n\n      <!--select country control-->\n\n      <ion-item id="select-country">\n\n        <ion-label>Country</ion-label>\n\n        <ion-select formControlName="country">\n\n          <ion-option *ngFor="let country of countries"\n\n                      [value]="country.code">{{ country.name }}</ion-option>\n\n        </ion-select>\n\n      </ion-item>\n\n      <!--/select country control-->\n\n\n\n    </ion-list>\n\n\n\n    <!--buttons-->\n\n    <div text-center padding>\n\n      <button ion-button icon-start (click)="onSaveContact()" [disabled]="!contactForm.valid">\n\n        <ion-icon name="checkmark-circle"></ion-icon>\n\n        Submit\n\n      </button>\n\n      <button ion-button icon-start\n\n              (click)="onCancelBtn()" class="fondo-naranja">\n\n        <ion-icon name="close-circle"></ion-icon>\n\n        Cancel\n\n      </button>\n\n    </div>\n\n    <!--/buttons-->\n\n\n\n  </form>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\contact\contact.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_3__services_contacts_service__["a" /* ContactsService */]])
-    ], NewContactPage);
-    return NewContactPage;
+    ], ContactPage);
+    return ContactPage;
 }());
 
-//# sourceMappingURL=new-contact.js.map
+//# sourceMappingURL=contact.js.map
 
 /***/ }),
 
@@ -559,7 +558,7 @@ var NewContactPage = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactsService; });
-// todo: cambiar nombre new-contact pagina
+// todo: cambiar nombre contact pagina
 // todo: repasar README.md
 // todo: contact component
 // todo: activar service worker para pwa

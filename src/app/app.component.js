@@ -12,7 +12,7 @@ import { Platform } from 'ionic-angular';
 import { ContactsService } from '../services/contacts.service';
 import { HomePage } from '../pages/home/home';
 import { MenuController, NavController } from 'ionic-angular';
-import { NewContactPage } from '../pages/new-contact/new-contact';
+import { ContactPage } from '../pages/contact/contact';
 import { Action } from '../models/action';
 import { HelpPage } from '../pages/help/help';
 var MyApp = /** @class */ (function () {
@@ -31,7 +31,7 @@ var MyApp = /** @class */ (function () {
         this.devWidth = this.platform.width();
     }
     MyApp.prototype.onNewContact = function () {
-        this.navCtrl.push(NewContactPage, { action: Action.CREATE });
+        this.navCtrl.push(ContactPage, { action: Action.CREATE });
         this.menuCtrl.close();
     };
     MyApp.prototype.onHelp = function () {

@@ -1,4 +1,4 @@
-// todo: cambiar nombre new-contact pagina
+// todo: cambiar nombre contact pagina
 // todo: repasar README.md
 // todo: contact component
 // todo: activar service worker para pwa
