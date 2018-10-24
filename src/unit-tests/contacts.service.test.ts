@@ -62,7 +62,7 @@ describe('ContactsService', () => {
   });
 
   test('isEmpty(): should check if contact list is empty', () => {
-    const isEmpty: boolean = contactsService.isEmpty();
+    const isEmpty: boolean = contactsService.isEmptyContactList();
     expect(isEmpty).toBe(false);
   });
 

@@ -11,8 +11,8 @@ import { NewContactPage } from '../new-contact/new-contact';
 })
 export class HomePage {
 
+  private _contacts: Contact[];
   urlAvatar: string = "assets/imgs/1.png";
-  _contacts: Contact[];
   @ViewChild('searchBar') searchBar: Searchbar;
 
   get contacts(): Contact[] {
@@ -26,8 +26,9 @@ export class HomePage {
   constructor(public navCtrl: NavController, private contactsService: ContactsService) {
     // todo: borrar
     contactsService.loadContactsFromLocalStorage();
-    if (contactsService.isEmpty()) {
-      contactsService.loadContactsFromMemory()
+    if (contactsService.isEmptyContactList()) {
+      contactsService.loadContactsFromMemory();
+      window.alert('Address Book is empty. Loading dummy data');
     }
     contactsService.sortAlphabetically();
     this.contacts = this.contactsService.getAll();
@@ -60,7 +61,7 @@ export class HomePage {
   }
 
   isContactListEmpty(): boolean {
-    return this.contactsService.isEmpty();
+    return this.contactsService.isEmptyContactList();
   }
 
   ionViewWillEnter() {

@@ -29,7 +29,7 @@ var HelpPage = /** @class */ (function () {
     };
     HelpPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-help',template:/*ion-inline-start:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\help\help.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-title>Help</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-grid style="height: 100%">\n\n    <ion-row justify-content-center align-items-center style="height: 50%">\n\n      <ion-card>\n\n        <ion-card-header color="primary">\n\n          Information:\n\n        </ion-card-header>\n\n        <ion-list>\n\n          <ion-item>\n\n            <ion-icon name="checkmark-circle-outline" item-start></ion-icon>\n\n            <p class="info-text">\n\n              In mobile screens, when the left side menu is hidden, drag from the left\n\n              side border of the screen to open the menu\n\n            </p>\n\n          </ion-item>\n\n\n\n          <ion-item>\n\n            <ion-icon name="checkmark-circle-outline" item-start></ion-icon>\n\n            <p class="info-text">Swipe contact to the left to remove it from the list</p>\n\n          </ion-item>\n\n\n\n        </ion-list>\n\n      </ion-card>\n\n    </ion-row>\n\n    <ion-row justify-content-center>\n\n      <button ion-button icon-start (click)="onCloseBtn()">\n\n        <ion-icon name="close-circle"></ion-icon>\n\n        Close\n\n      </button>\n\n    </ion-row>\n\n   </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\help\help.html"*/,
+            selector: 'page-help',template:/*ion-inline-start:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\help\help.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-title>Help</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-card>\n\n    <ion-card-header color="primary">\n\n      Information:\n\n    </ion-card-header>\n\n    <ion-list>\n\n      <ion-item>\n\n        <ion-icon name="checkmark-circle-outline" item-start></ion-icon>\n\n        <p class="info-text">\n\n          In mobile screens, when the left side menu is hidden, drag from the left\n\n          side border of the screen to open the menu\n\n        </p>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-icon name="checkmark-circle-outline" item-start></ion-icon>\n\n        <p class="info-text">Swipe contact to the left to remove it from the list</p>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-icon name="checkmark-circle-outline" item-start></ion-icon>\n\n        <p class="info-text">\n\n          The app is a PWA, so it will be able to run offline <br>\n\n          You can add the app to the desktop/home screen with\n\n          "Menu -> More Tools -> Create Shortcut..."\n\n        </p>\n\n      </ion-item>\n\n\n\n    </ion-list>\n\n  </ion-card>\n\n  <br>\n\n  <div padding text-center>\n\n    <button ion-button icon-start (click)="onCloseBtn()">\n\n      <ion-icon name="close-circle"></ion-icon>\n\n      Close\n\n    </button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\help\help.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* MenuController */]])
     ], HelpPage);
@@ -113,8 +113,9 @@ var HomePage = /** @class */ (function () {
         this.urlAvatar = "assets/imgs/1.png";
         // todo: borrar
         contactsService.loadContactsFromLocalStorage();
-        if (contactsService.isEmpty()) {
+        if (contactsService.isEmptyContactList()) {
             contactsService.loadContactsFromMemory();
+            window.alert('Address Book is empty. Loading dummy data');
         }
         contactsService.sortAlphabetically();
         this.contacts = this.contactsService.getAll();
@@ -154,7 +155,7 @@ var HomePage = /** @class */ (function () {
         }
     };
     HomePage.prototype.isContactListEmpty = function () {
-        return this.contactsService.isEmpty();
+        return this.contactsService.isEmptyContactList();
     };
     HomePage.prototype.ionViewWillEnter = function () {
         this.contacts = this.contactsService.getAll();
@@ -543,10 +544,11 @@ var NewContactPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-new-contact',template:/*ion-inline-start:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\new-contact\new-contact.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-title *ngIf="action === \'CREATE\'">New Contact</ion-title>\n\n    <ion-title *ngIf="action === \'UPDATE\'">Contact</ion-title>\n\n    <ion-buttons end *ngIf="action === \'UPDATE\'">\n\n      <button ion-button icon-only (click)="onRemoveContact()" title="Remove Contact">\n\n        <ion-icon name="trash"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n  <form [formGroup]="contactForm">\n\n\n\n    <ion-list>\n\n      <!--id control-->\n\n      <ion-item *ngIf="action === \'UPDATE\'">\n\n        <ion-label>Id:</ion-label>\n\n        <ion-input type="text" formControlName="id" disabled></ion-input>\n\n      </ion-item>\n\n\n\n      <!--firstName control-->\n\n      <ion-item>\n\n        <ion-label floating>First Name</ion-label>\n\n        <ion-input type="text" formControlName="firstName" clearInput></ion-input>\n\n      </ion-item>\n\n      <p *ngIf="firstNameControl.hasError(\'required\')" class="error">\n\n        ⛔ Required field\n\n      </p>\n\n      <p *ngIf="firstNameControl.hasError(\'minlength\')" class="error">\n\n        ⛔ Minimum length is {{ MIN_LENGTH }}\n\n      </p>\n\n\n\n      <!--lastName control-->\n\n      <ion-item>\n\n        <ion-label floating>Last Name</ion-label>\n\n        <ion-input type="text" formControlName="lastName" clearInput></ion-input>\n\n      </ion-item>\n\n      <p *ngIf="lastNameControl.hasError(\'required\')" class="error">\n\n        ⛔ Required field\n\n      </p>\n\n      <p *ngIf="lastNameControl.hasError(\'minlength\')" class="error">\n\n        ⛔ Minimum length is {{ MIN_LENGTH }}\n\n      </p>\n\n\n\n      <!--email control-->\n\n      <ion-item>\n\n        <ion-label floating>Email</ion-label>\n\n        <ion-input type="email" formControlName="email" clearInput></ion-input>\n\n      </ion-item>\n\n      <p *ngIf="emailControl.hasError(\'required\')" class="error">\n\n        ⛔ Required field\n\n      </p>\n\n      <p *ngIf="emailControl.hasError(\'email\')" class="error">\n\n        ⛔ Invalid Email\n\n      </p>\n\n\n\n      <!--select country control-->\n\n      <ion-item id="select-country">\n\n        <ion-label>Country</ion-label>\n\n        <ion-select formControlName="country">\n\n          <ion-option *ngFor="let country of countries"\n\n                      [value]="country.code">{{ country.name }}</ion-option>\n\n        </ion-select>\n\n      </ion-item>\n\n      <!--/select country control-->\n\n\n\n    </ion-list>\n\n\n\n    <!--buttons-->\n\n    <div text-center padding>\n\n      <button ion-button icon-start (click)="onSaveContact()" [disabled]="!contactForm.valid">\n\n        <ion-icon name="checkmark-circle"></ion-icon>\n\n        Submit\n\n      </button>\n\n      <button ion-button icon-start\n\n              (click)="onCancelBtn()" class="fondo-naranja">\n\n        <ion-icon name="close-circle"></ion-icon>\n\n        Cancel\n\n      </button>\n\n    </div>\n\n    <!--/buttons-->\n\n\n\n  </form>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\yagol\Documents\projects\gig-address-book\src\pages\new-contact\new-contact.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_contacts_service__["a" /* ContactsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_contacts_service__["a" /* ContactsService */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3__services_contacts_service__["a" /* ContactsService */]])
     ], NewContactPage);
     return NewContactPage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=new-contact.js.map
@@ -558,10 +560,9 @@ var NewContactPage = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactsService; });
-// todo: usar libreria para countries
-// todo: contact component
-// todo: repasar README.md
 // todo: cambiar nombre new-contact pagina
+// todo: repasar README.md
+// todo: contact component
 // todo: activar service worker para pwa
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -621,8 +622,10 @@ var ContactsService = /** @class */ (function () {
      * Loads the contact list from Local Storage
      */
     ContactsService.prototype.loadContactsFromLocalStorage = function () {
-        this.contacts = JSON.parse(localStorage.getItem('contacts'));
-        this.sortAlphabetically();
+        var contactsData = localStorage.getItem('contacts');
+        if (contactsData !== undefined) {
+            this.contacts = JSON.parse(localStorage.getItem('contacts'));
+        }
     };
     ContactsService.prototype.getAll = function () {
         return this.contacts;
@@ -666,12 +669,8 @@ var ContactsService = /** @class */ (function () {
      * Save all contacts to localStorage
      */
     ContactsService.prototype.saveAll = function () {
-        localStorage.setItem('contacts', JSON.stringify(this.contacts));
-        try {
+        if (this.contacts !== undefined) {
             localStorage.setItem('contacts', JSON.stringify(this.contacts));
-        }
-        catch (error) {
-            throw error;
         }
     };
     /**
@@ -687,8 +686,8 @@ var ContactsService = /** @class */ (function () {
         }
         this.logToConsole();
     };
-    ContactsService.prototype.isEmpty = function () {
-        return this.contacts.length == 0;
+    ContactsService.prototype.isEmptyContactList = function () {
+        return this.contacts && this.contacts.length == 0;
     };
     ContactsService.capitalizeFirstLetter = function (text) {
         return text.charAt(0).toUpperCase() + text.toLocaleLowerCase().slice(1);

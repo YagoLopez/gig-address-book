@@ -1,7 +1,6 @@
-// todo: usar libreria para countries
-// todo: contact component
-// todo: repasar README.md
 // todo: cambiar nombre new-contact pagina
+// todo: repasar README.md
+// todo: contact component
 // todo: activar service worker para pwa
 
 import { Contact } from '../models/contact';
@@ -21,7 +20,7 @@ const isEqual = require('lodash/isEqual');
  */
 export class ContactsService{
 
-  public contacts: Contact[];
+  private contacts: Contact[];
 
   constructor() {
     if (!this.isLocalStorageAvailable()) {
@@ -47,8 +46,10 @@ export class ContactsService{
    * Loads the contact list from Local Storage
    */
   loadContactsFromLocalStorage(): void {
-    this.contacts = JSON.parse(localStorage.getItem('contacts')) as Contact[];
-    this.sortAlphabetically();
+    const contactsData: string = localStorage.getItem('contacts');
+    if (contactsData !== undefined) {
+      this.contacts = JSON.parse(localStorage.getItem('contacts')) as Contact[];
+    }
   }
 
   /**
@@ -116,11 +117,8 @@ export class ContactsService{
    * Save all contacts to localStorage
    */
   saveAll() {
-    localStorage.setItem('contacts', JSON.stringify(this.contacts));
-    try {
+    if (this.contacts !== undefined) {
       localStorage.setItem('contacts', JSON.stringify(this.contacts));
-    } catch (error) {
-      throw error;
     }
   }
 
@@ -137,8 +135,8 @@ export class ContactsService{
     this.logToConsole();
   }
 
-  isEmpty(): boolean {
-    return this.contacts.length == 0;
+  isEmptyContactList(): boolean {
+    return this.contacts && this.contacts.length == 0;
   }
 
   static capitalizeFirstLetter(text: string): string {

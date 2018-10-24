@@ -25739,7 +25739,7 @@ ion-fab[bottom] {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  height: 90%;
+  height: 70%;
   color: #efefef;
 }
 
