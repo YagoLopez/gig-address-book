@@ -8,10 +8,10 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ContactPage } from './contact';
-var NewContactPageModule = /** @class */ (function () {
-    function NewContactPageModule() {
+var ContactPageModule = /** @class */ (function () {
+    function ContactPageModule() {
     }
-    NewContactPageModule = __decorate([
+    ContactPageModule = __decorate([
         NgModule({
             declarations: [
                 ContactPage,
@@ -21,8 +21,8 @@ var NewContactPageModule = /** @class */ (function () {
                 ReactiveFormsModule
             ],
         })
-    ], NewContactPageModule);
-    return NewContactPageModule;
+    ], ContactPageModule);
+    return ContactPageModule;
 }());
-export { NewContactPageModule };
+export { ContactPageModule };
 //# sourceMappingURL=contact.module.js.map

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactsService } from '../../services/contacts.service';
+import { duplicatedEmailValidator } from '../../validators/duplicatedEmail.validator';
 import Countries from 'country-list';
 
 @Component({
@@ -27,10 +28,12 @@ export class ContactPage {
   ]);
 
   emailControl = new FormControl('', [
-    Validators.required
+    Validators.required,
+    Validators.email,
+    duplicatedEmailValidator(this.contactsService.getAll())
   ]);
 
-  countryControl = new FormControl('');
+  countryControl = new FormControl('', Validators.required);
 
   contactForm = new FormGroup({
     id: this.idControl,
@@ -87,10 +90,13 @@ export class ContactPage {
     this.navCtrl.pop();
   }
 
-  ionViewWillEnter() {
-    this.firstNameControl.setErrors({});
-    this.lastNameControl.setErrors({});
-    this.emailControl.setErrors({});
+  ngAfterViewInit() {
+    if (this.action === 'CREATE') {
+      this.firstNameControl.setErrors({});
+      this.lastNameControl.setErrors({});
+      this.countryControl.setErrors({});
+    }
+    this.emailControl.setErrors(null);
   }
 
 }

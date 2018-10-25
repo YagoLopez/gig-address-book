@@ -10,8 +10,8 @@ describe('ContactsService', () => {
     contactsService = new ContactsService();
     contactsService.loadContactsFromMemory();
     contacts = contactsService.getAll();
-    // Mock console.table() to avoid error
-    console.table = jest.fn()
+    // Mock console.table() to avoid error. Jest doesnt run in real browser
+    console.table = jest.fn();
   });
 
   test('should load all users from memory', () => {

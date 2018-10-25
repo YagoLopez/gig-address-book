@@ -26,10 +26,10 @@
         <ion-label floating>First Name</ion-label>
         <ion-input type="text" formControlName="firstName" clearInput></ion-input>
       </ion-item>
-      <p *ngIf="firstNameControl.hasError('required') && firstNameControl.touched" class="error">
+      <p *ngIf="firstNameControl.hasError('required')" class="error">
         ⛔ Required field
       </p>
-      <p *ngIf="firstNameControl.hasError('minlength') && firstNameControl.touched" class="error">
+      <p *ngIf="firstNameControl.hasError('minlength')" class="error">
         ⛔ Minimum length is {{ MIN_LENGTH }}
       </p>
 
@@ -55,6 +55,9 @@
       </p>
       <p *ngIf="emailControl.hasError('email')" class="error">
         ⛔ Invalid Email
+      </p>
+      <p *ngIf="emailControl.hasError('duplicatedEmail')" class="error">
+        ⛔ Duplicated Email
       </p>
 
       <!--select country control-->

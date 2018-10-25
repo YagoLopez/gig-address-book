@@ -7,7 +7,7 @@ By [Yago López Salvador](https://yagolopez.js.org)
 ## Features
 
 - **Progressive Web Application** with offline capabilities enabled by a service worker. The service worker writes files to the *browser cache storage*. 
-  - The cache can be showed at: Menu → More Tools → Developer Tools → Application Tab → Cache → Cache Storage
+  - In Chrome, the cache can be showed at: Menu → More Tools → Developer Tools → Application Tab → Cache → Cache Storage
   - Visit the page and then **reload** it to write the files to the cache. 
   - Add an app icon to desktop/home screen from: Menu → More Tools → Developer Tools → Create Shorcut.
   - Disconnect from network

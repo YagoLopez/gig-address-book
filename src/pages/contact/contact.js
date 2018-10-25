@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactsService } from '../../services/contacts.service';
+import { duplicatedEmailValidator } from '../../validators/duplicatedEmail.validator';
 import Countries from 'country-list';
 var ContactPage = /** @class */ (function () {
     function ContactPage(navCtrl, navParams, contactsService) {
@@ -30,11 +31,10 @@ var ContactPage = /** @class */ (function () {
         ]);
         this.emailControl = new FormControl('', [
             Validators.required,
-            Validators.email
+            Validators.email,
+            duplicatedEmailValidator(this.contactsService.getAll())
         ]);
-        this.countryControl = new FormControl('', [
-            Validators.required
-        ]);
+        this.countryControl = new FormControl('', Validators.required);
         this.contactForm = new FormGroup({
             id: this.idControl,
             firstName: this.firstNameControl,
@@ -81,9 +81,12 @@ var ContactPage = /** @class */ (function () {
     ContactPage.prototype.goToPreviousPage = function () {
         this.navCtrl.pop();
     };
-    ContactPage.prototype.ionViewWillEnter = function () {
-        this.firstNameControl.setErrors(null);
-        this.lastNameControl.setErrors(null);
+    ContactPage.prototype.ngAfterViewInit = function () {
+        if (this.action === 'CREATE') {
+            this.firstNameControl.setErrors({});
+            this.lastNameControl.setErrors({});
+            this.countryControl.setErrors({});
+        }
         this.emailControl.setErrors(null);
     };
     ContactPage = __decorate([

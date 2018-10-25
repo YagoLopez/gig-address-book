@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { NewContactPageModule } from '../pages/contact/contact.module';
+import { ContactPageModule } from '../pages/contact/contact.module';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -26,7 +26,7 @@ import { HelpPageModule } from '../pages/help/help.module';
         {component: ContactPage, name: 'contact', segment: 'contact', defaultHistory: [HomePage]}
       ]
     }),
-    NewContactPageModule,
+    ContactPageModule,
     HelpPageModule
   ],
   bootstrap: [IonicApp],

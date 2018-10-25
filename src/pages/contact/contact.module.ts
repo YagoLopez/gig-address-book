@@ -12,4 +12,4 @@ import { ContactPage } from './contact';
     ReactiveFormsModule
   ],
 })
-export class NewContactPageModule {}
+export class ContactPageModule {}
