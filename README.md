@@ -20,6 +20,7 @@ By [Yago López Salvador](https://yagolopez.js.org)
 - Supported browsers: Chrome, Firefox, Edge (modern versions).
 - **Testing**: Ionci v3 does not provide infrastructure for testing by default (like Angular with Jasmine, Karma and Protractor). So Jest testing framework has been used
 - Operations on data are logged to browser console
+- Input data **validation**
 
 ## Demo
 
