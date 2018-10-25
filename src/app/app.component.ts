@@ -14,7 +14,7 @@ export class MyApp {
 
   rootPage = HomePage;
   @ViewChild('content') navCtrl: NavController;
-  public devWidth;
+  devWidth: number;
 
   // tslint:disable-next-line
   constructor(private contactsService: ContactsService,
