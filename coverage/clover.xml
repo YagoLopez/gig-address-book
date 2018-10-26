@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1540430865891" clover="3.2.0">
-  <project timestamp="1540430865891" name="All files">
+<coverage generated="1540555086556" clover="3.2.0">
+  <project timestamp="1540555086556" name="All files">
     <metrics statements="78" coveredstatements="57" conditionals="12" coveredconditionals="4" methods="20" coveredmethods="15" elements="110" coveredelements="76" complexity="0" loc="78" ncloc="78" packages="2" files="2" classes="2">
       <package name="services">
         <metrics statements="68" coveredstatements="51" conditionals="10" coveredconditionals="4" methods="16" coveredmethods="13"/>
@@ -78,7 +78,7 @@
       </package>
       <package name="validators">
         <metrics statements="10" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="2"/>
-        <file name="duplicatedEmail.validator.ts" path="C:\Users\yagol\Documents\projects\gig-address-book\src\validators\duplicatedEmail.validator.ts">
+        <file name="duplicatedEmailValidator.ts" path="C:\Users\yagol\Documents\projects\gig-address-book\src\validators\duplicatedEmailValidator.ts">
           <metrics statements="10" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="2"/>
           <line num="4" count="1" type="stmt"/>
           <line num="6" count="1" type="stmt"/>

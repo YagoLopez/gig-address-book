@@ -118,7 +118,7 @@ BRF:10
 BRH:4
 end_of_record
 TN:
-SF:C:\Users\yagol\Documents\projects\gig-address-book\src\validators\duplicatedEmail.validator.ts
+SF:C:\Users\yagol\Documents\projects\gig-address-book\src\validators\duplicatedEmailValidator.ts
 FN:6,isDuplicatedEmail
 FN:7,(anonymous_1)
 FN:13,duplicatedEmailValidator

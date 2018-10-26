@@ -40,15 +40,16 @@ By [Yago López Salvador](https://yagolopez.js.org)
 - When the app is started, contacts collection is loaded in memory from Browser LocalStorage. If LocalStorage is empty, a dummy data is created programatically.
 - When the app is running, operations on data are executed in memory
 - When the app is closed, the contacts collection is persisted to Browser LocalStorage
-- Use of **Repository Pattern** to manage the contacts collection using a *Contacts Repositoy Service*
+- Use of **MVC Pattern** for separation of concerns
+- Use of **Repository Pattern** to manage the contact collection using a *Contacts Repositoy Service*
 - Use of **Singleton Pattern**. The *Contacts Repository Service* has only an instance in memory to share data between components.
-- Use of **Inversion of Control Pattern** for code modularity and decoupling (*SOLID principles*). The injection of dependencies is provided as infrastructure by the Angular Framework
+- Use of **Inversion of Control Pattern** for code modularity and decoupling (*[SOLID principles](https://en.wikipedia.org/wiki/SOLID)*). The injection of dependencies is provided as infrastructure by the Angular Framework
 - Use of **Component Pattern**. Ionic provides a library of premade UI components
 - Use of a **Contact Model** to represent an **entity** from the model domain.
 
 ## Scripts
 
-Run In the commnad line:
+Run In the commnad line in project directory:
 
 - List available scripts `npm run`
 - Run Application: `npm run start`
@@ -58,5 +59,9 @@ Run In the commnad line:
 - Lint Application: `npm run lint`
 - Run Code Coverage: `npm run coverage:run`
 - Show Coverage: `npm run coverage:show`
-  - [View coverage](https://yagolopez.js.org/gig-address-book/coverage/lcov-report/)
-- Show Application in Browser: `npm run show:app`
+  - [View coverage](coverage/lcov-report/)
+- Show Application Built in Browser: `npm run show:app`
+
+
+
+[Back to top ↑](#)
