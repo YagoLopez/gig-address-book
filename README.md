@@ -28,7 +28,7 @@ By [Yago López Salvador](https://yagolopez.js.org)
 
 - QR Code:
 
-  ![](qrcode.png)
+  ![QR Code](qrcode.png)
 
 
 ## Requirements
@@ -61,7 +61,6 @@ Run In the commnad line in project directory:
 - Show Coverage: `npm run coverage:show`
   - [View coverage](https://yagolopez.js.org/gig-address-book/coverage/lcov-report/)
 - Show Application Built in Browser: `npm run show:app`
+- Package Analysis: `npm run analyze:packages`
 
-
-
-[Back to top ↑](#)
+<p align="center"><a href="#">Back to top ↑</a></p>

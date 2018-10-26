@@ -12,12 +12,14 @@ const isEqual = require('lodash/isEqual');
 
 /**
  * Contacts Service implements the Repository Pattern for Contact model domain (aka entity)
+ * istanbul ignore next
  */
 export class ContactsService{
 
   private contacts: Contact[];
 
   constructor() {
+    /* istanbul ignore next */
     if (!this.isLocalStorageAvailable()) {
       const msg = 'Local Storage not availalble in browser';
       window.alert(msg);
@@ -40,6 +42,7 @@ export class ContactsService{
   /**
    * Loads the contact list from Local Storage
    */
+  /* istanbul ignore next */
   loadContactsFromLocalStorage(): void {
     const contactsData: string = localStorage.getItem('contacts');
     if (contactsData !== undefined) {
@@ -95,6 +98,7 @@ export class ContactsService{
     const oldContactIndex = findIndex(this.contacts, {id: contact.id});
     const oldContact = this.contacts[oldContactIndex];
     if (isEqual(oldContact, contact)) {
+      /* istambul ignore next */
       window.alert('Data has not changed');
       return false;
     } else {
@@ -111,6 +115,7 @@ export class ContactsService{
   /**
    * Save all contacts to localStorage
    */
+  /* istanbul ignore next */
   saveAll() {
     if (this.contacts !== undefined) {
       localStorage.setItem('contacts', JSON.stringify(this.contacts));
@@ -119,7 +124,9 @@ export class ContactsService{
 
   /**
    * Remove all contacts from localStorage
+   * istanbul ignore next
    */
+  /* istanbul ignore next */
   removeAll() {
     try {
       this.contacts.length = 0;

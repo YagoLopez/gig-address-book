@@ -10,6 +10,7 @@ export function isDuplicatedEmail(email: string, contacts: Contact[]): boolean {
   return result > -1;
 }
 
+/* istanbul ignore next */
 export function duplicatedEmailValidator(contacts: Contact[]): ValidatorFn {
   return (control: AbstractControl): { [key: string]: boolean } | null => {
     if (isDuplicatedEmail(control.value, contacts)) {

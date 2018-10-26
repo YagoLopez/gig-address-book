@@ -14,7 +14,8 @@
     "test:watch": "jest --watch --notify",
     "coverage:run": "npm run test -- --coverage --no-cache",
     "coverage:show": "lite-server --baseDir=\"coverage/lcov-report/\"",
-    "show:app": "lite-server --baseDir=\"www\""
+    "show:app": "lite-server --baseDir=\"www\"",
+    "analyze:packages": "source-map-explorer .\\www\\build\\main.js .\\.sourcemaps\\main.js.map --only-mapped"
   },
   "jest": {
     "transform": {
@@ -29,7 +30,8 @@
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/services/*.{ts}", "src/validators/*.{ts}"
+      "src/services/*.{ts}",
+      "src/validators/*.{ts}"
     ]
   },
   "dependencies": {
@@ -61,6 +63,7 @@
     "@types/lodash": "^4.14.117",
     "jest": "^23.6.0",
     "reflect-metadata": "^0.1.12",
+    "source-map-explorer": "^1.6.0",
     "ts-jest": "^23.10.4",
     "typescript": "~2.6.2"
   },
