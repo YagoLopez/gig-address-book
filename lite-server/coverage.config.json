@@ -1,0 +1,6 @@
+{
+  "port": 3010,
+  "cors": true,
+  "server":
+  { "baseDir": "coverage/lcov-report/"}
+}

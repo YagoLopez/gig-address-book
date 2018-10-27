@@ -1,6 +1,6 @@
 {
   "name": "gig-address-book",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Yago Lopez Salvador",
   "homepage": "https://yagolopez.js.org",
   "private": true,
@@ -13,9 +13,9 @@
     "test": "jest --notify",
     "test:watch": "jest --watch --notify",
     "coverage:run": "npm run test -- --coverage --no-cache",
-    "coverage:show": "lite-server --baseDir=\"coverage/lcov-report/index.html#no-cache\"",
-    "show:app": "lite-server --baseDir=\"www\"",
-    "analyze:packages": "source-map-explorer .\\www\\build\\main.js .\\.sourcemaps\\main.js.map --only-mapped"
+    "coverage:show": "lite-server --config=lite-server\\coverage.config.json",
+    "show:app": "lite-server --config=lite-server\\app.config.json",
+    "analyze:packages": "source-map-explorer www\\build\\main.js .sourcemaps\\main.js.map --only-mapped"
   },
   "jest": {
     "transform": {

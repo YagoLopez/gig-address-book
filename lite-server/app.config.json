@@ -1,0 +1,6 @@
+{
+  "port": 3020,
+  "cors": true,
+  "server":
+  { "baseDir": "www/"}
+}
