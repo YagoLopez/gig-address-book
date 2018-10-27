@@ -13,7 +13,7 @@
     "test": "jest --notify",
     "test:watch": "jest --watch --notify",
     "coverage:run": "npm run test -- --coverage --no-cache",
-    "coverage:show": "lite-server --baseDir=\"coverage/lcov-report/\"",
+    "coverage:show": "lite-server --baseDir=\"coverage/lcov-report/index.html#no-cache\"",
     "show:app": "lite-server --baseDir=\"www\"",
     "analyze:packages": "source-map-explorer .\\www\\build\\main.js .\\.sourcemaps\\main.js.map --only-mapped"
   },

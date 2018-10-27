@@ -12,6 +12,8 @@ describe('ContactsService', () => {
     contacts = contactsService.getAll();
     // Mock console.table() to avoid error. Jest doesnt run in real browser
     console.table = jest.fn();
+    // Mock window.alert() to avoid error. Jest doesnt run in real browser
+    window.alert = jest.fn();
   });
 
   test('should load all users from memory', () => {
@@ -47,7 +49,7 @@ describe('ContactsService', () => {
     expect(contacts.length).toBe(5);
   });
 
-  test('update(): should update contact', () => {
+  test('update(): should update contact when contact data changes', () => {
     const updatedContact = {
       id: 1,
       firstName: 'Efirstname1',
@@ -59,6 +61,21 @@ describe('ContactsService', () => {
     contactsService.sortAlphabetically();
     const contacts: any[] = contactsService.getAll();
     expect(contacts[3].email).toBe('email5@domain.com');
+  });
+
+  test('update(): should not update contact when contact data does not change', () => {
+    const updatedContact = {
+      "id": 1,
+      "firstName": "Cfirstname1",
+      "lastName": "Lastname1",
+      "email": "email1@domain.com",
+      "country": "ES"
+    };
+    contactsService.update(updatedContact);
+    contactsService.sortAlphabetically();
+    const contacts: any[] = contactsService.getAll();
+    const oldContact = contacts[2];
+    expect(oldContact).toStrictEqual(updatedContact);
   });
 
   test('isEmpty(): should check if contact list is empty', () => {

@@ -61,7 +61,7 @@ export class ContactsService{
       localStorage.removeItem(test);
       return true;
     } catch (error) {
-      return false;
+      return false; /* istanbul ignore line */
     }
   };
 
@@ -98,7 +98,6 @@ export class ContactsService{
     const oldContactIndex = findIndex(this.contacts, {id: contact.id});
     const oldContact = this.contacts[oldContactIndex];
     if (isEqual(oldContact, contact)) {
-      /* istambul ignore next */
       window.alert('Data has not changed');
       return false;
     } else {

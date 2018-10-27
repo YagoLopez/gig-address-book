@@ -6,7 +6,6 @@ import { duplicatedEmailValidator } from '../../validators/duplicatedEmail.valid
 import Countries from 'country-list';
 
 @Component({
-  selector: 'page-new-contact',
   templateUrl: 'contact.html',
 })
 export class ContactPage {
@@ -59,6 +58,7 @@ export class ContactPage {
     }
   }
 
+
   onSaveContact() {
     if (this.contactForm.valid) {
       if (this.action === 'CREATE') {
@@ -91,12 +91,22 @@ export class ContactPage {
   }
 
   ngAfterViewInit() {
-    if (this.action === 'CREATE') {
+    if (this.action === undefined) {
+      this.goToPreviousPage();
+    }
+    // Due to ionic bug
+    if (this.firstNameControl.errors && this.firstNameControl.untouched) {
       this.firstNameControl.setErrors({});
+    }
+    if (this.lastNameControl.errors && this.lastNameControl.untouched) {
       this.lastNameControl.setErrors({});
+    }
+    if (this.emailControl.errors && this.emailControl.untouched) {
+      this.emailControl.setErrors({});
+    }
+    if (this.countryControl.errors && this.countryControl.untouched) {
       this.countryControl.setErrors({});
     }
-    this.emailControl.setErrors(null);
   }
 
 }

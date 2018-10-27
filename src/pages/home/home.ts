@@ -6,7 +6,6 @@ import { Action } from '../../models/action';
 import { ContactPage } from '../contact/contact';
 
 @Component({
-  selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
@@ -70,16 +69,17 @@ export class HomePage {
 
   filterContacts($event: any): void {
 
-    // Reset items back to all of the items
+    // Reset contacts back to all of the contacts
     this.contacts = this.contactsService.getAll();
 
     // set val to the value of the searchbar
     const val = $event.target.value;
 
-    // if the value is an empty string don't filter the items
+    // if the value is an empty string don't filter the contacts
     if (val && val.trim() != '') {
       this.contacts = this.contacts.filter((contact) => {
-        return ((contact.firstName + ' ' +contact.lastName).toLowerCase().indexOf(val.toLowerCase()) > -1);
+        const contactName = contact.firstName + ' ' + contact.lastName;
+        return (contactName.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
