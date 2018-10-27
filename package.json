@@ -52,7 +52,6 @@
     "country-list": "^1.1.0",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
-    "lite-server": "^2.4.0",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.26"
@@ -62,6 +61,7 @@
     "@types/jest": "^23.3.5",
     "@types/lodash": "^4.14.117",
     "jest": "^23.6.0",
+    "lite-server": "^2.4.0",
     "reflect-metadata": "^0.1.12",
     "source-map-explorer": "^1.6.0",
     "ts-jest": "^23.10.4",
