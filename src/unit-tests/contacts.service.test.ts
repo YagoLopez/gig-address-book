@@ -12,8 +12,6 @@ describe('ContactsService', () => {
     contacts = contactsService.getAll();
     // Mock console.table() to avoid error. Jest doesnt run in real browser
     console.table = jest.fn();
-    // Mock window.alert() to avoid error. Jest doesnt run in real browser
-    window.alert = jest.fn();
   });
 
   test('should load all users from memory', () => {

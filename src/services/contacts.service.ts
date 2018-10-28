@@ -98,7 +98,6 @@ export class ContactsService{
     const oldContactIndex = findIndex(this.contacts, {id: contact.id});
     const oldContact = this.contacts[oldContactIndex];
     if (isEqual(oldContact, contact)) {
-      window.alert('Data has not changed');
       return false;
     } else {
       oldContact.firstName = ContactsService.capitalizeFirstLetter(contact.firstName);

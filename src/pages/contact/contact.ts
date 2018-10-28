@@ -68,6 +68,8 @@ export class ContactPage {
       if (this.action === 'UPDATE') {
         if(this.contactsService.update(this.contactForm.value)) {
           this.goToPreviousPage();
+        } else {
+          window.alert('Data has not changed');
         }
       }
     } else {

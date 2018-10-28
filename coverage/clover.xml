@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1540674665815" clover="3.2.0">
-  <project timestamp="1540674665815" name="All files">
-    <metrics statements="57" coveredstatements="55" conditionals="4" coveredconditionals="4" methods="15" coveredmethods="15" elements="76" coveredelements="74" complexity="0" loc="57" ncloc="57" packages="2" files="2" classes="2">
+<coverage generated="1540731682261" clover="3.2.0">
+  <project timestamp="1540731682261" name="All files">
+    <metrics statements="56" coveredstatements="54" conditionals="4" coveredconditionals="4" methods="15" coveredmethods="15" elements="75" coveredelements="73" complexity="0" loc="56" ncloc="56" packages="2" files="2" classes="2">
       <package name="services">
-        <metrics statements="51" coveredstatements="49" conditionals="4" coveredconditionals="4" methods="13" coveredmethods="13"/>
+        <metrics statements="50" coveredstatements="48" conditionals="4" coveredconditionals="4" methods="13" coveredmethods="13"/>
         <file name="contacts.service.ts" path="C:\Users\yagol\Documents\projects\gig-address-book\src\services\contacts.service.ts">
-          <metrics statements="51" coveredstatements="49" conditionals="4" coveredconditionals="4" methods="13" coveredmethods="13"/>
+          <metrics statements="50" coveredstatements="48" conditionals="4" coveredconditionals="4" methods="13" coveredmethods="13"/>
           <line num="4" count="2" type="stmt"/>
           <line num="6" count="2" type="stmt"/>
           <line num="8" count="2" type="stmt"/>
@@ -38,7 +38,6 @@
           <line num="98" count="2" type="stmt"/>
           <line num="99" count="2" type="stmt"/>
           <line num="100" count="2" type="cond" truecount="2" falsecount="0"/>
-          <line num="101" count="1" type="stmt"/>
           <line num="102" count="1" type="stmt"/>
           <line num="104" count="1" type="stmt"/>
           <line num="105" count="1" type="stmt"/>

@@ -3,8 +3,7 @@
     <ion-title *ngIf="action === 'CREATE'">New Contact</ion-title>
     <ion-title *ngIf="action === 'UPDATE'">Contact</ion-title>
     <ion-buttons *ngIf="action === 'UPDATE'" end>
-      <button (click)="onRemoveContact()" [disabled]="contactForm.invalid"
-              icon-only ion-button title="Remove Contact">
+      <button (click)="onRemoveContact()" icon-only ion-button title="Remove Contact">
         <ion-icon name="trash"></ion-icon>
       </button>
     </ion-buttons>
