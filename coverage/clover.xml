@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1540731682261" clover="3.2.0">
-  <project timestamp="1540731682261" name="All files">
+<coverage generated="1540732183524" clover="3.2.0">
+  <project timestamp="1540732183524" name="All files">
     <metrics statements="56" coveredstatements="54" conditionals="4" coveredconditionals="4" methods="15" coveredmethods="15" elements="75" coveredelements="73" complexity="0" loc="56" ncloc="56" packages="2" files="2" classes="2">
       <package name="services">
         <metrics statements="50" coveredstatements="48" conditionals="4" coveredconditionals="4" methods="13" coveredmethods="13"/>
@@ -38,24 +38,24 @@
           <line num="98" count="2" type="stmt"/>
           <line num="99" count="2" type="stmt"/>
           <line num="100" count="2" type="cond" truecount="2" falsecount="0"/>
-          <line num="102" count="1" type="stmt"/>
+          <line num="101" count="1" type="stmt"/>
+          <line num="103" count="1" type="stmt"/>
           <line num="104" count="1" type="stmt"/>
           <line num="105" count="1" type="stmt"/>
           <line num="106" count="1" type="stmt"/>
           <line num="107" count="1" type="stmt"/>
           <line num="108" count="1" type="stmt"/>
           <line num="109" count="1" type="stmt"/>
-          <line num="110" count="1" type="stmt"/>
-          <line num="139" count="2" type="stmt"/>
-          <line num="140" count="1" type="cond" truecount="2" falsecount="0"/>
-          <line num="143" count="2" type="stmt"/>
-          <line num="144" count="5" type="stmt"/>
-          <line num="147" count="2" type="stmt"/>
+          <line num="138" count="2" type="stmt"/>
+          <line num="139" count="1" type="cond" truecount="2" falsecount="0"/>
+          <line num="142" count="2" type="stmt"/>
+          <line num="143" count="5" type="stmt"/>
+          <line num="146" count="2" type="stmt"/>
+          <line num="147" count="3" type="stmt"/>
           <line num="148" count="3" type="stmt"/>
-          <line num="149" count="3" type="stmt"/>
-          <line num="152" count="2" type="stmt"/>
-          <line num="153" count="3" type="stmt"/>
-          <line num="156" count="2" type="stmt"/>
+          <line num="151" count="2" type="stmt"/>
+          <line num="152" count="3" type="stmt"/>
+          <line num="155" count="2" type="stmt"/>
         </file>
       </package>
       <package name="validators">
