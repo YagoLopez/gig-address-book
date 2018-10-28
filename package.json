@@ -12,9 +12,9 @@
     "lint": "ionic-app-scripts lint",
     "test": "jest --notify",
     "test:watch": "jest --watch --notify",
-    "coverage:run": "npm run test -- --coverage --no-cache",
+    "coverage:create": "npm run test -- --coverage --no-cache",
     "coverage:show": "lite-server --config=lite-server\\coverage.config.json",
-    "show:app": "lite-server --config=lite-server\\app.config.json",
+    "show:prod:app": "lite-server --config=lite-server\\app.config.json",
     "analyze:packages": "source-map-explorer www\\build\\main.js .sourcemaps\\main.js.map --only-mapped"
   },
   "jest": {

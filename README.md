@@ -57,10 +57,10 @@ Run In the commnad line in project directory:
 - Build Application: `npm run build`
 - Build Application for Production: `npm run build:prod`
 - Lint Application: `npm run lint`
-- Run Code Coverage: `npm run coverage:run`
+- Create Coverage Report: `npm run coverage:create`
 - Show Coverage: `npm run coverage:show`
   - [View coverage](https://yagolopez.js.org/gig-address-book/coverage/lcov-report/)
-- Show Application Built in Browser: `npm run show:app`
+- Show Application Built in Browser: `npm run show:prod:app`
 - Package Analysis: `npm run analyze:packages`
 
 <p align="center"><a href="#">Back to top ↑</a></p>

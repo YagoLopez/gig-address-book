@@ -2,8 +2,9 @@
   <ion-navbar color="primary">
     <ion-title *ngIf="action === 'CREATE'">New Contact</ion-title>
     <ion-title *ngIf="action === 'UPDATE'">Contact</ion-title>
-    <ion-buttons end *ngIf="action === 'UPDATE'">
-      <button ion-button icon-only (click)="onRemoveContact()" title="Remove Contact">
+    <ion-buttons *ngIf="action === 'UPDATE'" end>
+      <button (click)="onRemoveContact()" [disabled]="contactForm.invalid"
+              icon-only ion-button title="Remove Contact">
         <ion-icon name="trash"></ion-icon>
       </button>
     </ion-buttons>
@@ -74,7 +75,7 @@
 
     <!--buttons-->
     <div text-center padding>
-      <button ion-button icon-start (click)="onSaveContact()" [disabled]="!contactForm.valid">
+      <button ion-button icon-start (click)="onSaveContact()" [disabled]="contactForm.invalid">
         <ion-icon name="checkmark-circle"></ion-icon>
         Save
       </button>

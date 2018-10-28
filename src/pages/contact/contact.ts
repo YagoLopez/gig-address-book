@@ -90,7 +90,7 @@ export class ContactPage {
     this.navCtrl.pop();
   }
 
-  ngAfterViewInit() {
+  ionViewWillEnter() {
     if (this.action === undefined) {
       this.goToPreviousPage();
     }
@@ -102,7 +102,7 @@ export class ContactPage {
       this.lastNameControl.setErrors({});
     }
     if (this.emailControl.errors && this.emailControl.untouched) {
-      this.emailControl.setErrors({});
+      this.emailControl.setErrors(null);
     }
     if (this.countryControl.errors && this.countryControl.untouched) {
       this.countryControl.setErrors({});
