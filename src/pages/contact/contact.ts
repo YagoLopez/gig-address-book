@@ -49,7 +49,6 @@ export class ContactPage {
     const contactData = this.navParams.data;
     this.action = contactData.action;
     if (this.action === 'UPDATE') {
-      this.action = contactData.action;
       this.idControl.setValue(contactData.id);
       this.firstNameControl.setValue(contactData.firstName);
       this.lastNameControl.setValue(contactData.lastName);

@@ -4,10 +4,10 @@ import { Contact } from '../models/contact';
 const findIndex = require('lodash/findIndex');
 
 export function isDuplicatedEmail(email: string, contacts: Contact[]): boolean {
-  const result = findIndex(contacts, contact => {
+  const contactIndex = findIndex(contacts, contact => {
     return contact.email == email;
   });
-  return result > -1;
+  return contactIndex > -1;
 }
 
 /* istanbul ignore next */

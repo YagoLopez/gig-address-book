@@ -12,7 +12,6 @@ const isEqual = require('lodash/isEqual');
 
 /**
  * Contacts Service implements the Repository Pattern for Contact model domain (aka entity)
- * istanbul ignore next
  */
 export class ContactsService{
 
@@ -118,7 +117,6 @@ export class ContactsService{
 
   /**
    * Remove all contacts from localStorage
-   * istanbul ignore next
    */
   /* istanbul ignore next */
   removeAll() {
