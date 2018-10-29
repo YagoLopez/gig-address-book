@@ -6,6 +6,7 @@ export function isDuplicatedEmail(email, contacts) {
     });
     return result > -1;
 }
+/* istanbul ignore next */
 export function duplicatedEmailValidator(contacts) {
     return function (control) {
         if (isDuplicatedEmail(control.value, contacts)) {

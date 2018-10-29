@@ -23,6 +23,11 @@ describe('ContactsService', () => {
     expect(contacts.length).toBe(3);
   });
 
+  test('remove(): should not remove non existent contact from list', () => {
+    contactsService.remove('x');
+    expect(contacts.length).toBe(4);
+  });
+
   test('getAll(): should get all contacts from contact list', () => {
     const contacts = contactsService.getAll();
     expect(contacts.length).toBe(4);

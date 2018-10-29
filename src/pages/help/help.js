@@ -20,7 +20,6 @@ var HelpPage = /** @class */ (function () {
     };
     HelpPage = __decorate([
         Component({
-            selector: 'page-help',
             templateUrl: 'help.html',
         }),
         __metadata("design:paramtypes", [NavController, MenuController])

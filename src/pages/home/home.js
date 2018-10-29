@@ -75,14 +75,15 @@ var HomePage = /** @class */ (function () {
         this.searchBar.value = '';
     };
     HomePage.prototype.filterContacts = function ($event) {
-        // Reset items back to all of the items
+        // Reset contacts back to all of the contacts
         this.contacts = this.contactsService.getAll();
         // set val to the value of the searchbar
         var val = $event.target.value;
-        // if the value is an empty string don't filter the items
+        // if the value is an empty string don't filter the contacts
         if (val && val.trim() != '') {
             this.contacts = this.contacts.filter(function (contact) {
-                return ((contact.firstName + ' ' + contact.lastName).toLowerCase().indexOf(val.toLowerCase()) > -1);
+                var contactName = contact.firstName + ' ' + contact.lastName;
+                return (contactName.toLowerCase().indexOf(val.toLowerCase()) > -1);
             });
         }
     };
@@ -92,7 +93,6 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "searchBar", void 0);
     HomePage = __decorate([
         Component({
-            selector: 'page-home',
             templateUrl: 'home.html'
         }),
         __metadata("design:paramtypes", [NavController, ContactsService])

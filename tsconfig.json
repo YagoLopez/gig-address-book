@@ -19,7 +19,6 @@
   ],
   "exclude": [
     "node_modules",
-    "src/mocks",
     "src/unit-tests"
   ],
   "compileOnSave": false,

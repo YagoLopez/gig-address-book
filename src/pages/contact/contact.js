@@ -63,6 +63,9 @@ var ContactPage = /** @class */ (function () {
                 if (this.contactsService.update(this.contactForm.value)) {
                     this.goToPreviousPage();
                 }
+                else {
+                    window.alert('Data has not changed');
+                }
             }
         }
         else {
@@ -81,17 +84,26 @@ var ContactPage = /** @class */ (function () {
     ContactPage.prototype.goToPreviousPage = function () {
         this.navCtrl.pop();
     };
-    ContactPage.prototype.ngAfterViewInit = function () {
-        if (this.action === 'CREATE') {
+    ContactPage.prototype.ionViewWillEnter = function () {
+        if (this.action === undefined) {
+            this.goToPreviousPage();
+        }
+        // Due to ionic bug
+        if (this.firstNameControl.errors && this.firstNameControl.untouched) {
             this.firstNameControl.setErrors({});
+        }
+        if (this.lastNameControl.errors && this.lastNameControl.untouched) {
             this.lastNameControl.setErrors({});
+        }
+        if (this.emailControl.errors && this.emailControl.untouched) {
+            this.emailControl.setErrors(null);
+        }
+        if (this.countryControl.errors && this.countryControl.untouched) {
             this.countryControl.setErrors({});
         }
-        this.emailControl.setErrors(null);
     };
     ContactPage = __decorate([
         Component({
-            selector: 'page-new-contact',
             templateUrl: 'contact.html',
         }),
         __metadata("design:paramtypes", [NavController,

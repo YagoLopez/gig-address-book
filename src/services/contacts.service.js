@@ -17,6 +17,7 @@ var findIndex = require('lodash/findIndex');
 var isEqual = require('lodash/isEqual');
 /**
  * Contacts Service implements the Repository Pattern for Contact model domain (aka entity)
+ * istanbul ignore next
  */
 var ContactsService = /** @class */ (function () {
     function ContactsService() {
@@ -32,9 +33,10 @@ var ContactsService = /** @class */ (function () {
                 return true;
             }
             catch (error) {
-                return false;
+                return false; /* istanbul ignore line */
             }
         };
+        /* istanbul ignore next */
         if (!this.isLocalStorageAvailable()) {
             var msg = 'Local Storage not availalble in browser';
             window.alert(msg);
@@ -55,6 +57,7 @@ var ContactsService = /** @class */ (function () {
     /**
      * Loads the contact list from Local Storage
      */
+    /* istanbul ignore next */
     ContactsService.prototype.loadContactsFromLocalStorage = function () {
         var contactsData = localStorage.getItem('contacts');
         if (contactsData !== undefined) {
@@ -76,17 +79,19 @@ var ContactsService = /** @class */ (function () {
     ContactsService.prototype.remove = function (id) {
         try {
             remove(this.contacts, { id: id });
+            return true;
         }
         catch (error) {
-            throw error;
+            return false;
         }
-        this.logToConsole();
+        finally {
+            this.logToConsole();
+        }
     };
     ContactsService.prototype.update = function (contact) {
         var oldContactIndex = findIndex(this.contacts, { id: contact.id });
         var oldContact = this.contacts[oldContactIndex];
         if (isEqual(oldContact, contact)) {
-            window.alert('Data has not changed');
             return false;
         }
         else {
@@ -102,6 +107,7 @@ var ContactsService = /** @class */ (function () {
     /**
      * Save all contacts to localStorage
      */
+    /* istanbul ignore next */
     ContactsService.prototype.saveAll = function () {
         if (this.contacts !== undefined) {
             localStorage.setItem('contacts', JSON.stringify(this.contacts));
@@ -109,7 +115,9 @@ var ContactsService = /** @class */ (function () {
     };
     /**
      * Remove all contacts from localStorage
+     * istanbul ignore next
      */
+    /* istanbul ignore next */
     ContactsService.prototype.removeAll = function () {
         try {
             this.contacts.length = 0;

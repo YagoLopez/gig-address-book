@@ -86,11 +86,7 @@ export class ContactsService{
   }
 
   remove(id: string | number): void {
-    try {
-      remove(this.contacts, {id: id});
-    } catch (error) {
-      throw error;
-    }
+    remove(this.contacts, {id: id});
     this.logToConsole();
   }
 
