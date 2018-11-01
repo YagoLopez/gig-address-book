@@ -103,4 +103,42 @@ describe('ContactsService', () => {
     expect(isLocalStorageAvailable).toBe(true);
   });
 
+  test('saveAll(): should save all contacts to localStorage', () => {
+    const KEY = 'contacts';
+    const VALUE = JSON.stringify(contactsService.getAll());
+    contactsService.saveAll();
+    expect(localStorage.setItem).toHaveBeenLastCalledWith(KEY, VALUE);
+    expect(localStorage.__STORE__[KEY]).toBe(VALUE);
+    expect(Object.keys(localStorage.__STORE__).length).toBe(1);
+  });
+
+  test('removeAll(): should remove all contacts from localStorage', () => {
+    const KEY = 'contacts';
+    contactsService.removeAll();
+    expect(localStorage.__STORE__[KEY]).toBe(undefined);
+    expect(Object.keys(localStorage.__STORE__).length).toBe(0);
+  });
+
+  test('loadContactsFromLocalStorage(): should load contacts from localStorage', () => {
+    const contact = {
+      id: 1,
+      firstName: 'firstName1',
+      lastName: 'lastName1',
+      email: 'email1@domain.com',
+      country: 'ES'
+    };
+    contactsService.removeAll();
+    contactsService.add(contact);
+    contactsService.saveAll();
+    contactsService.loadContactsFromLocalStorage();
+    const contacts = contactsService.getAll();
+    expect(contacts.length).toBe(1);
+    expect(contacts[0].firstName).toBe('Firstname1');
+    expect(contacts[0].lastName).toBe('Lastname1');
+    expect(contacts[0].email).toBe('email1@domain.com');
+    expect(contacts[0].country).toBe('ES');
+    expect(Object.keys(localStorage.__STORE__).length).toBe(1);
+  });
+
+
 });

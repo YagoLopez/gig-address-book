@@ -41,7 +41,6 @@ export class ContactsService{
   /**
    * Loads the contact list from Local Storage
    */
-  /* istanbul ignore next */
   loadContactsFromLocalStorage(): void {
     const contactsData: string = localStorage.getItem('contacts');
     if (contactsData !== undefined) {
@@ -108,7 +107,6 @@ export class ContactsService{
   /**
    * Save all contacts to localStorage
    */
-  /* istanbul ignore next */
   saveAll() {
     if (this.contacts !== undefined) {
       localStorage.setItem('contacts', JSON.stringify(this.contacts));
@@ -118,7 +116,6 @@ export class ContactsService{
   /**
    * Remove all contacts from localStorage
    */
-  /* istanbul ignore next */
   removeAll() {
     try {
       this.contacts.length = 0;
