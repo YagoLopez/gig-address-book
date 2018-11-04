@@ -35,6 +35,12 @@ By [Yago López Salvador](https://yagolopez.js.org)
 
 - Node Package Manager (NPM)
 
+## Installation
+
+- Donwload and Unzip or clone de repository with git
+- Change to project directory
+- Run `npm install` to install dependencies
+
 ## Architecture and Functionality
 
 - When the app is started, contacts collection is loaded in memory from Browser LocalStorage. If LocalStorage is empty, a dummy data is created programatically.
